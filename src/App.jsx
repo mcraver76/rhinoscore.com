@@ -1,9 +1,12 @@
 // RhinoScore — public marketing site
-// Industry-agnostic Operational Intelligence Platform positioning.
-// Owned by Six10 Digital LLC (stated in header + footer).
+// Minimal, single-screen landing (immersive hero) + separate pages that explain.
+// Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
+
+import { useEffect, useRef } from "react";
 
 const OWNER = "Six10 Digital LLC";
 const SUPPORT_EMAIL = "support@rhinoscore.com";
+const DEMO = `mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`;
 
 const pillars = [
   ["Operational Visibility", "Know what's happening, know what isn't, and know what changed — across every location, in one connected view."],
@@ -51,7 +54,7 @@ function OwnerBar() {
 function Brand() {
   return (
     <a className="brand" href="/" aria-label="RhinoScore home">
-      <img src="/brand/rhino.png" alt="" width="34" height="34" />
+      <img src="/brand/rhino.png" alt="" width="32" height="32" />
       <span><span className="b-rhino">Rhino</span><span className="b-score">Score</span></span>
     </a>
   );
@@ -63,14 +66,14 @@ function Nav() {
       <div className="wrap nav-inner">
         <Brand />
         <nav className="nav-links" aria-label="Primary">
-          <a href="/#platform">The platform</a>
-          <a href="/#how">How it works</a>
-          <a href="/#who">Who it's for</a>
+          <a href="/platform">The platform</a>
+          <a href="/how-it-works">How it works</a>
+          <a href="/who-its-for">Who it's for</a>
           <a href="/account">Account &amp; data</a>
         </nav>
         <div className="nav-cta">
           <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>
-          <a className="button primary" href={`mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`}>Request a demo</a>
+          <a className="button primary" href={DEMO}>Request a demo</a>
         </div>
       </div>
     </header>
@@ -94,10 +97,10 @@ function Footer() {
         <nav className="footer-cols" aria-label="Footer">
           <div className="footer-col">
             <h4>Product</h4>
-            <a href="/#platform">The platform</a>
-            <a href="/#how">How it works</a>
-            <a href="/#who">Who it's for</a>
-            <a href={`mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`}>Request a demo</a>
+            <a href="/platform">The platform</a>
+            <a href="/how-it-works">How it works</a>
+            <a href="/who-its-for">Who it's for</a>
+            <a href={DEMO}>Request a demo</a>
           </div>
           <div className="footer-col">
             <h4>Legal &amp; data</h4>
@@ -119,92 +122,36 @@ function Footer() {
   );
 }
 
-/* ---------- home sections ---------- */
+/* ---------- Landing (minimal, single screen) ---------- */
 
-function Hero() {
+function Landing() {
   return (
-    <section className="hero">
-      <div className="wrap hero-grid">
-        <div className="hero-copy">
-          <span className="eyebrow">Operational Intelligence Platform</span>
-          <h1>Know what needs attention before it becomes a bigger problem.</h1>
-          <p className="lede">
-            RhinoScore turns operational complexity into clear, actionable
-            intelligence — one connected view of your people, locations, and work
-            across every site. So leaders manage exceptions, not data.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href={`mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`}>Request a demo</a>
-            <a className="button secondary" href="#platform">See the platform</a>
-          </div>
-          <p className="hero-note">Information shouldn't have to be chased.</p>
+    <section className="landing">
+      <div className="landing-inner">
+        <span className="hud-c tl" aria-hidden="true" />
+        <span className="hud-c tr" aria-hidden="true" />
+        <span className="hud-c bl" aria-hidden="true" />
+        <span className="hud-c br" aria-hidden="true" />
+        <div className="hud-bar">
+          <span className="hud-bar-id">Operational Intelligence Platform</span>
+          <span className="hud-bar-live"><span className="hud-live" aria-hidden="true" />Live</span>
         </div>
-
-        <div className="signal" aria-label="Example of what RhinoScore surfaces">
-          <div className="signal-head">
-            <span>Operations · Today</span>
-            <span className="live">Live</span>
-          </div>
-          <div className="signal-stat">
-            <div className="attn"><b>3</b><span>Need attention</span></div>
-            <div className="ok"><b>128</b><span>On track</span></div>
-          </div>
-          <ul className="signal-list">
-            <li className="attn"><span className="dot" aria-hidden="true"></span>Site 14 — flagged for review<span className="ago">2m</span></li>
-            <li className="attn"><span className="dot" aria-hidden="true"></span>North region — target at risk<span className="ago">14m</span></li>
-            <li className="ok"><span className="dot" aria-hidden="true"></span>Location 07 — completed with proof<span className="ago">1h</span></li>
-          </ul>
-          <p className="signal-foot">RhinoScore surfaces the exceptions. You decide what happens next.</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Problem() {
-  return (
-    <section className="section">
-      <div className="wrap">
-        <p className="problem-quote">
-          Operations don't fail because people don't care.{" "}
-          <span>They fail because information arrives too late, lives in too many places, and no one has the complete picture.</span>
+        <h1>RhinoScore turns operational complexity into <em>clear, actionable intelligence</em>.</h1>
+        <p className="lede">
+          Know what needs attention before it becomes a bigger problem — so
+          leaders manage exceptions, not data.
         </p>
-        <div className="compare">
-          <div className="compare-card">
-            <h3>Without RhinoScore</h3>
-            <ul className="compare-list">
-              {before.map((t) => (
-                <li key={t}><span className="dash" aria-hidden="true" />{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="compare-card after">
-            <h3>With RhinoScore</h3>
-            <ul className="compare-list">
-              {after.map((t) => (
-                <li key={t}><Check />{t}</li>
-              ))}
-            </ul>
-          </div>
+        <div className="hero-actions">
+          <a className="button primary" href={DEMO}>Request a demo</a>
+          <a className="button secondary" href="/platform">Explore the platform</a>
         </div>
       </div>
+      <a className="scroll-hint" href="/platform">See what it does <span aria-hidden="true">↓</span></a>
     </section>
   );
 }
 
-function Principle() {
-  return (
-    <section className="principle">
-      <div className="wrap">
-        <p className="k">Owners manage <b>exceptions</b>, not data.</p>
-        <p className="sub">
-          Organizations don't need more data. They need clarity, accountability,
-          and the few things that actually require action right now.
-        </p>
-      </div>
-    </section>
-  );
-}
+/* ---------- content sections (used on the explainer pages) ---------- */
 
 function Pillars() {
   return (
@@ -227,6 +174,47 @@ function Pillars() {
               <p>{body}</p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Principle() {
+  return (
+    <section className="principle">
+      <div className="wrap">
+        <p className="k">Owners manage <b>exceptions</b>, not data.</p>
+        <p className="sub">
+          Organizations don't need more data. They need clarity, accountability,
+          and the few things that actually require action right now.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function Problem() {
+  return (
+    <section className="section">
+      <div className="wrap">
+        <p className="problem-quote">
+          Operations don't fail because people don't care.{" "}
+          <span>They fail because information arrives too late, lives in too many places, and no one has the complete picture.</span>
+        </p>
+        <div className="compare">
+          <div className="compare-card">
+            <h3>Without RhinoScore</h3>
+            <ul className="compare-list">
+              {before.map((t) => (<li key={t}><span className="dash" aria-hidden="true" />{t}</li>))}
+            </ul>
+          </div>
+          <div className="compare-card after">
+            <h3>With RhinoScore</h3>
+            <ul className="compare-list">
+              {after.map((t) => (<li key={t}><Check />{t}</li>))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -294,7 +282,7 @@ function CtaBand() {
           <h2>See what RhinoScore would surface in your operation.</h2>
           <p>A short walkthrough, tailored to how your organization actually runs. No pressure, no jargon.</p>
           <div className="hero-actions">
-            <a className="button primary" href={`mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`}>Request a demo</a>
+            <a className="button primary" href={DEMO}>Request a demo</a>
             <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
           </div>
         </div>
@@ -303,18 +291,16 @@ function CtaBand() {
   );
 }
 
-function HomePage() {
-  return (
-    <main>
-      <Hero />
-      <Problem />
-      <Principle />
-      <Pillars />
-      <How />
-      <Audience />
-      <CtaBand />
-    </main>
-  );
+/* ---------- explainer pages ---------- */
+
+function PlatformPage() {
+  return (<main><Pillars /><Principle /><CtaBand /></main>);
+}
+function HowPage() {
+  return (<main><Problem /><How /><CtaBand /></main>);
+}
+function WhoPage() {
+  return (<main><Audience /><CtaBand /></main>);
 }
 
 /* ---------- account & data (unsubscribe / delete) ---------- */
@@ -351,7 +337,7 @@ function AccountPage() {
                 </div>
               </div>
             </div>
-            <p className="note" style={{ marginTop: 16, color: "var(--muted)", fontWeight: 400 }}>
+            <p className="note" style={{ marginTop: 16, color: "var(--ink-mute)", fontWeight: 400 }}>
               If you have an active RhinoScore account, we may still send essential
               service messages (for example, security or billing notices) that keep
               your account working. Those stop when your account is closed.
@@ -374,7 +360,7 @@ function AccountPage() {
                 </div>
               </div>
             </div>
-            <p className="note" style={{ marginTop: 16, color: "var(--muted)", fontWeight: 400 }}>
+            <p className="note" style={{ marginTop: 16, color: "var(--ink-mute)", fontWeight: 400 }}>
               Some records may be retained where required for legal, security, or
               legitimate business reasons — for example, records tied to billing or
               fraud prevention. We'll tell you if anything must be kept, and why.
@@ -468,16 +454,34 @@ function PolicyPage({ type }) {
 /* ---------- router ---------- */
 
 export default function App() {
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  }, []);
+
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
 
   let page;
-  if (path === "/privacy") page = <PolicyPage type="privacy" />;
+  if (path === "/platform") page = <PlatformPage />;
+  else if (path === "/how-it-works") page = <HowPage />;
+  else if (path === "/who-its-for") page = <WhoPage />;
+  else if (path === "/privacy") page = <PolicyPage type="privacy" />;
   else if (path === "/terms") page = <PolicyPage type="terms" />;
   else if (path === "/account") page = <AccountPage />;
-  else page = <HomePage />;
+  else page = <Landing />;
 
   return (
     <>
+      <div className="site-bg" aria-hidden="true">
+        <video ref={videoRef} className="site-bg-video" autoPlay muted loop playsInline preload="auto">
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="site-bg-veil" />
+      </div>
       <OwnerBar />
       <Nav />
       {page}
