@@ -60,16 +60,26 @@ function Brand() {
   );
 }
 
+const NAV_LINKS = [
+  ["/platform", "The platform"],
+  ["/how-it-works", "How it works"],
+  ["/who-its-for", "Who it's for"],
+  ["/account", "Account & data"],
+];
+
 function Nav() {
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
   return (
     <header className="site-nav">
       <div className="wrap nav-inner">
         <Brand />
         <nav className="nav-links" aria-label="Primary">
-          <a href="/platform">The platform</a>
-          <a href="/how-it-works">How it works</a>
-          <a href="/who-its-for">Who it's for</a>
-          <a href="/account">Account &amp; data</a>
+          {NAV_LINKS.map(([href, label]) => {
+            const active = path === href;
+            return (
+              <a key={href} href={href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>{label}</a>
+            );
+          })}
         </nav>
         <div className="nav-cta">
           <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>

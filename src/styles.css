@@ -157,10 +157,17 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .brand .b-rhino { color: var(--ink); }
 .brand .b-score { color: var(--cyan); }
 .nav-links {
-  display: flex; align-items: center; gap: 30px;
+  display: flex; align-items: center; gap: 6px;
   color: var(--ink-mute); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a { padding: 8px 14px; border-radius: 8px; border: 1px solid transparent; transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease; }
+.nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.05); }
+.nav-links a.active {
+  color: var(--cyan);
+  background: rgba(94, 242, 224, 0.12);
+  border-color: rgba(94, 242, 224, 0.35);
+  box-shadow: inset 0 0 16px rgba(94, 242, 224, 0.12), 0 0 14px rgba(94, 242, 224, 0.15);
+}
 .nav-cta { display: flex; align-items: center; gap: 20px; }
 .nav-cta .button { min-height: 42px; padding: 0 20px; font-size: 0.82rem; letter-spacing: 0.05em; }
 .nav-cta .button.secondary { background: transparent; border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0; padding: 4px 2px; min-height: auto; color: var(--ink-mute); text-transform: uppercase; }
