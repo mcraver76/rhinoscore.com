@@ -431,7 +431,7 @@ const policySections = {
       { title: "Accounts", body: "You agree to provide accurate account information and to keep your sign-in credentials secure. Contact us if you believe your account has been accessed without permission." },
       { title: "Your Content", body: `You retain responsibility for the content and records entered into RhinoScore. You grant ${OWNER} permission to process that content as needed to provide the service.` },
       { title: "Service Changes", body: "RhinoScore may update, improve, suspend, or discontinue features as the product evolves. We aim to communicate material changes clearly when they affect you." },
-      { title: "Governing Law & Contact", body: `These terms are governed by the laws of the state in which ${OWNER} is organized. Questions can be sent to ${OWNER} at ${SUPPORT_EMAIL}.` },
+      { title: "Governing Law & Contact", body: `These terms are governed by the laws of the State of Georgia, United States. Questions can be sent to ${OWNER} at ${SUPPORT_EMAIL}.` },
     ],
   },
 };
