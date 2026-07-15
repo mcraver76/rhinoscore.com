@@ -459,6 +459,7 @@ export default function App() {
     const v = videoRef.current;
     if (!v) return;
     v.muted = true;
+    v.playbackRate = 0.6;
     const p = v.play();
     if (p && p.catch) p.catch(() => {});
   }, []);

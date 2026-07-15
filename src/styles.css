@@ -51,7 +51,7 @@ body {
 
 /* fixed cinematic video backdrop, behind every page */
 .site-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--void); }
-.site-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.site-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(1.5px); transform: scale(1.06); }
 .site-bg-veil {
   position: absolute; inset: 0;
   background:
