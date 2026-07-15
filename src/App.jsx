@@ -279,8 +279,8 @@ function CtaBand() {
     <section className="section">
       <div className="wrap">
         <div className="cta-band">
-          <h2>See what RhinoScore would surface in your operation.</h2>
-          <p>A short walkthrough, tailored to how your organization actually runs. No pressure, no jargon.</p>
+          <h2>From complexity to <em>clarity</em>.</h2>
+          <p>A short walkthrough of RhinoScore, tailored to how your organization actually runs. No pressure, no jargon.</p>
           <div className="hero-actions">
             <a className="button primary" href={DEMO}>Request a demo</a>
             <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
