@@ -338,9 +338,24 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 @keyframes holoIn { from { opacity: 0; transform: translateY(16px) scale(0.985); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .landing-inner { animation: none; } }
 .landing-inner .eyebrow { justify-content: flex-start; }
+.landing-col {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  width: 100%;
+  max-width: 700px;
+}
+.landing-col .landing-inner { width: 100%; }
 .landing h1 { margin-top: 4px; font-size: clamp(1.9rem, 3.9vw, 3.2rem); line-height: 1.03; }
 .landing .lede { margin: 16px 0 0; max-width: none; font-size: clamp(1rem, 1.4vw, 1.14rem); }
-.landing .hero-actions { justify-content: flex-start; margin-top: 26px; }
+.landing .hero-actions { justify-content: flex-start; margin-top: 0; padding-left: 4px; }
+@media (max-width: 560px) {
+  .landing .hero-actions { flex-direction: column; width: 100%; padding-left: 0; }
+  .landing .hero-actions .button { width: 100%; }
+}
 .scroll-hint {
   position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 2;
   color: var(--ink-mute); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;

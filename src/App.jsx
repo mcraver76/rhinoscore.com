@@ -159,20 +159,22 @@ function Footer() {
 function Landing() {
   return (
     <section className="landing">
-      <div className="landing-inner">
-        <span className="hud-c tl" aria-hidden="true" />
-        <span className="hud-c tr" aria-hidden="true" />
-        <span className="hud-c bl" aria-hidden="true" />
-        <span className="hud-c br" aria-hidden="true" />
-        <div className="hud-bar">
-          <span className="hud-bar-id">Operational Intelligence Platform</span>
-          <span className="hud-bar-live"><span className="hud-live" aria-hidden="true" />Live</span>
+      <div className="landing-col">
+        <div className="landing-inner">
+          <span className="hud-c tl" aria-hidden="true" />
+          <span className="hud-c tr" aria-hidden="true" />
+          <span className="hud-c bl" aria-hidden="true" />
+          <span className="hud-c br" aria-hidden="true" />
+          <div className="hud-bar">
+            <span className="hud-bar-id">Operational Intelligence Platform</span>
+            <span className="hud-bar-live"><span className="hud-live" aria-hidden="true" />Live</span>
+          </div>
+          <h1>RhinoScore turns operational complexity into <em>clear, actionable intelligence</em>.</h1>
+          <p className="lede">
+            Know what needs attention before it becomes a bigger problem — so
+            leaders manage exceptions, not data.
+          </p>
         </div>
-        <h1>RhinoScore turns operational complexity into <em>clear, actionable intelligence</em>.</h1>
-        <p className="lede">
-          Know what needs attention before it becomes a bigger problem — so
-          leaders manage exceptions, not data.
-        </p>
         <div className="hero-actions">
           <a className="button primary" href={DEMO}>Request a demo</a>
           <a className="button secondary" href="/platform">Explore the platform</a>
