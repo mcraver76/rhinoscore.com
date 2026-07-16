@@ -2,7 +2,7 @@
 // Minimal, single-screen landing (immersive hero) + separate pages that explain.
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const OWNER = "Six10 Digital LLC";
 const SUPPORT_EMAIL = "support@rhinoscore.com";
@@ -69,6 +69,7 @@ const NAV_LINKS = [
 
 function Nav() {
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const [open, setOpen] = useState(false);
   return (
     <header className="site-nav">
       <div className="wrap nav-inner">
@@ -85,7 +86,28 @@ function Nav() {
           <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>
           <a className="button primary" href={DEMO}>Request a demo</a>
         </div>
+        <button
+          type="button"
+          className={open ? "nav-burger open" : "nav-burger"}
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          <span /><span /><span />
+        </button>
       </div>
+      {open && (
+        <nav className="mobile-menu" aria-label="Mobile">
+          {NAV_LINKS.map(([href, label]) => {
+            const active = path === href;
+            return (
+              <a key={href} href={href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>{label}</a>
+            );
+          })}
+          <a className="button primary" href={DEMO}>Request a demo</a>
+          <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>
+        </nav>
+      )}
     </header>
   );
 }
