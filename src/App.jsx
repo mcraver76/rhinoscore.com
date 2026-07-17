@@ -64,7 +64,7 @@ const NAV_LINKS = [
   ["/platform", "The platform"],
   ["/how-it-works", "How it works"],
   ["/who-its-for", "Who it's for"],
-  ["/technology", "Technology"],
+  ["/security", "Security"],
   ["/account", "Account & data"],
 ];
 
@@ -133,7 +133,7 @@ function Footer() {
             <a href="/platform">The platform</a>
             <a href="/how-it-works">How it works</a>
             <a href="/who-its-for">Who it's for</a>
-            <a href="/technology">Technology &amp; security</a>
+            <a href="/security">Security</a>
             <a href={DEMO}>Request a demo</a>
           </div>
           <div className="footer-col">
@@ -487,66 +487,88 @@ function PolicyPage({ type }) {
   );
 }
 
-/* ---------- technology & security ---------- */
+/* ---------- security · trust & architecture ---------- */
 
-const techSections = [
-  {
-    title: "Architecture",
-    body: "RhinoScore is a cloud-native platform. Web and mobile clients talk to a secure API backed by a managed PostgreSQL database and dedicated object storage for media. On top of that operational data sits the intelligence layer that turns thousands of signals into the short list of things that need attention. Modern, serverless where it counts, and built to scale horizontally as an organization grows.",
-  },
-  {
-    title: "Multi-tenant isolation",
-    body: "Every organization's data is isolated at the database layer using PostgreSQL row-level security — not just hidden in the interface. Access is governed by granular permissions (what you can do) and scope (which part of the organization you can see), enforcing least privilege by default. A user can only ever reach data their organization and permissions allow.",
-  },
-  {
-    title: "Encryption",
-    body: "All traffic is encrypted in transit over TLS. Data is encrypted at rest on managed infrastructure. Secrets and API keys are held server-side and are never exposed to the browser.",
-  },
-  {
-    title: "Authentication & access control",
-    body: "Secure authentication with granular, per-user permissions — including separate financial-permission controls — so people see exactly what they should and nothing more. Sessions are protected, and permissions can be granted or revoked at any time.",
-  },
-  {
-    title: "Privacy & data ownership",
-    body: "Your data is yours. You can export or delete it at any time (see Account & data). We do not sell personal information. Personal details such as member email addresses are walled off from other users in your organization, and consent is recorded at sign-up.",
-  },
-  {
-    title: "Reliability & hosting",
-    body: "RhinoScore runs on enterprise cloud infrastructure that is SOC 2 Type 2 compliant. Data is backed up automatically, and the platform is continuously monitored for availability and errors.",
-  },
-  {
-    title: "AI, with humans in control",
-    body: "AI helps organize information, surface priorities, and reduce manual follow-up — while people stay in control of every operational decision. It is used to serve your operation, not to make the calls for you.",
-  },
-  {
-    title: "Reporting a security issue",
-    body: "Found something? Email support@rhinoscore.com and we'll respond promptly. We welcome responsible disclosure.",
-  },
-];
-
-function TechnologyPage() {
+function SecurityPage() {
   return (
     <main>
       <section className="policy-hero">
         <div className="wrap">
-          <p className="updated">Technology &amp; Security</p>
-          <h1>Built for trust.</h1>
+          <p className="updated">Trust &amp; Architecture</p>
+          <h1>Built so your data stays yours.</h1>
           <p>
-            For the technically minded — a clear look at how RhinoScore is
-            architected, how your data is isolated and protected, and how we keep
-            it reliable. Enough to evaluate us seriously; nothing that compromises
-            security.
+            RhinoScore is engineered for strict data isolation, least-privilege
+            access, and transparency — here's how it actually works, for the
+            people who like to know.
           </p>
         </div>
       </section>
       <div className="wrap">
         <div className="policy-stack">
-          {techSections.map((s) => (
-            <section className="policy-section" key={s.title}>
-              <h2>{s.title}</h2>
-              <p>{s.body}</p>
-            </section>
-          ))}
+
+          <section className="policy-section">
+            <p className="eyebrow">01 · Isolation</p>
+            <h2>Your data is isolated at the database, not just the app</h2>
+            <p>Every record in RhinoScore is scoped to your organization, and that boundary is enforced by the database itself through row-level security — not left to application code to remember. In practice: one company's users can never read, query, or reach another company's data, even in the event of an application bug. Isolation isn't a feature we add on top; it's the default every table is built on.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">02 · Access</p>
+            <h2>Inside your org, access is earned, not assumed</h2>
+            <p>Seeing sensitive information — financials, pay, personal contact details — requires an explicit grant, not just a job title. Our model separates what you do from what you're allowed to see from where you operate. The default is closed: with no grant, there's no access. Owners and admins decide who can see what, down to the category.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">03 · Encryption</p>
+            <h2>Encryption</h2>
+            <p>Data is encrypted in transit (TLS) between your browser and our services, and at rest on our managed database and storage platform. Credentials and API keys are held server-side only — never exposed to the browser.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">04 · Infrastructure</p>
+            <h2>Infrastructure you can look up</h2>
+            <p>RhinoScore runs on managed cloud infrastructure from providers that maintain SOC 2 Type II programs — our application platform and database are hosted on Vercel and Supabase, the latter running on AWS. We build on PostgreSQL as the system of record and use isolated serverless functions for integrations like email, notifications, and analysis.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">05 · Portability</p>
+            <h2>Your data is portable, and yours to remove</h2>
+            <p>You can export your organization's data, and you can delete your account and associated data from within the app. We don't hold your records hostage — no lock-in, no "contact sales to leave." See <a href="/account">Account &amp; data</a>.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">06 · Engineering</p>
+            <h2>How we build</h2>
+            <ul>
+              <li><strong>Controlled changes:</strong> every database change ships as a versioned, reviewed migration.</li>
+              <li><strong>Least privilege everywhere:</strong> services and functions get only the access they need.</li>
+              <li><strong>We review our own access rules:</strong> we periodically audit the policies that govern who can see what, and tighten them as the product grows.</li>
+              <li><strong>Secrets stay server-side:</strong> never in client code.</li>
+            </ul>
+          </section>
+
+          {/* TODO(owner): §7 AI — confirm inclusion, provider name, and the "not used to train" line against Anthropic's current terms before going live. */}
+          <section className="policy-section">
+            <p className="eyebrow">AI</p>
+            <h2>AI, handled transparently</h2>
+            <p>Some RhinoScore features (like drafting estimates or summarizing documents and photos) use a third-party AI provider (Anthropic). When you use those features, the relevant content is sent to that provider to generate the result. We send only what the feature needs, over encrypted connections, and we don't use your data to train external models.</p>
+          </section>
+
+          {/* Backup line CONFIRMED by owner (backups enabled). Do NOT extend to broader disaster-recovery claims without verification. */}
+          <section className="policy-section">
+            <p className="eyebrow">Reliability</p>
+            <h2>Reliability</h2>
+            <p>Your data is backed up automatically on a regular schedule.</p>
+          </section>
+
+          <section className="policy-section">
+            <p className="eyebrow">Roadmap</p>
+            <h2>Always hardening</h2>
+            <p>We're continuously hardening the platform and pursuing formal security certification as we grow. Have a security or compliance question? <a href={`mailto:${SUPPORT_EMAIL}?subject=Security%20question`}>Contact us</a>.</p>
+          </section>
+
+          <p className="smallprint">This page describes our architecture and practices in general terms and is provided for informational purposes only.</p>
+
         </div>
       </div>
     </main>
@@ -572,7 +594,7 @@ export default function App() {
   if (path === "/platform") page = <PlatformPage />;
   else if (path === "/how-it-works") page = <HowPage />;
   else if (path === "/who-its-for") page = <WhoPage />;
-  else if (path === "/technology") page = <TechnologyPage />;
+  else if (path === "/security" || path === "/technology") page = <SecurityPage />;
   else if (path === "/privacy") page = <PolicyPage type="privacy" />;
   else if (path === "/terms") page = <PolicyPage type="terms" />;
   else if (path === "/account") page = <AccountPage />;
