@@ -64,6 +64,7 @@ const NAV_LINKS = [
   ["/platform", "The platform"],
   ["/how-it-works", "How it works"],
   ["/who-its-for", "Who it's for"],
+  ["/technology", "Technology"],
   ["/account", "Account & data"],
 ];
 
@@ -132,6 +133,7 @@ function Footer() {
             <a href="/platform">The platform</a>
             <a href="/how-it-works">How it works</a>
             <a href="/who-its-for">Who it's for</a>
+            <a href="/technology">Technology &amp; security</a>
             <a href={DEMO}>Request a demo</a>
           </div>
           <div className="footer-col">
@@ -485,6 +487,72 @@ function PolicyPage({ type }) {
   );
 }
 
+/* ---------- technology & security ---------- */
+
+const techSections = [
+  {
+    title: "Architecture",
+    body: "RhinoScore is a cloud-native platform. Web and mobile clients talk to a secure API backed by a managed PostgreSQL database and dedicated object storage for media. On top of that operational data sits the intelligence layer that turns thousands of signals into the short list of things that need attention. Modern, serverless where it counts, and built to scale horizontally as an organization grows.",
+  },
+  {
+    title: "Multi-tenant isolation",
+    body: "Every organization's data is isolated at the database layer using PostgreSQL row-level security — not just hidden in the interface. Access is governed by role (what you can do) and scope (which part of the organization you can see), enforcing least privilege by default. A user can only ever reach data their organization and role permit.",
+  },
+  {
+    title: "Encryption",
+    body: "All traffic is encrypted in transit over TLS. Data is encrypted at rest on managed infrastructure. Secrets and API keys are held server-side and are never exposed to the browser.",
+  },
+  {
+    title: "Authentication & access control",
+    body: "Secure authentication with granular, role-based permissions — including separate financial-permission controls — so people see exactly what they should and nothing more. Sessions are protected, and access can be granted or revoked at any time.",
+  },
+  {
+    title: "Privacy & data ownership",
+    body: "Your data is yours. You can export or delete it at any time (see Account & data). We do not sell personal information. Personal details such as member email addresses are walled off from other users in your organization, and consent is recorded at sign-up.",
+  },
+  {
+    title: "Reliability & hosting",
+    body: "RhinoScore runs on enterprise cloud infrastructure that is SOC 2 Type 2 compliant. Data is backed up automatically, and the platform is continuously monitored for availability and errors.",
+  },
+  {
+    title: "AI, with humans in control",
+    body: "AI helps organize information, surface priorities, and reduce manual follow-up — while people stay in control of every operational decision. It is used to serve your operation, not to make the calls for you.",
+  },
+  {
+    title: "Reporting a security issue",
+    body: "Found something? Email support@rhinoscore.com and we'll respond promptly. We welcome responsible disclosure.",
+  },
+];
+
+function TechnologyPage() {
+  return (
+    <main>
+      <section className="policy-hero">
+        <div className="wrap">
+          <p className="updated">Technology &amp; Security</p>
+          <h1>Built for trust.</h1>
+          <p>
+            For the technically minded — a clear look at how RhinoScore is
+            architected, how your data is isolated and protected, and how we keep
+            it reliable. Enough to evaluate us seriously; nothing that compromises
+            security.
+          </p>
+        </div>
+      </section>
+      <div className="wrap">
+        <div className="policy-stack">
+          {techSections.map((s) => (
+            <section className="policy-section" key={s.title}>
+              <h2>{s.title}</h2>
+              <p>{s.body}</p>
+            </section>
+          ))}
+        </div>
+      </div>
+    </main>
+  );
+}
+
 /* ---------- router ---------- */
 
 export default function App() {
@@ -504,6 +572,7 @@ export default function App() {
   if (path === "/platform") page = <PlatformPage />;
   else if (path === "/how-it-works") page = <HowPage />;
   else if (path === "/who-its-for") page = <WhoPage />;
+  else if (path === "/technology") page = <TechnologyPage />;
   else if (path === "/privacy") page = <PolicyPage type="privacy" />;
   else if (path === "/terms") page = <PolicyPage type="terms" />;
   else if (path === "/account") page = <AccountPage />;
