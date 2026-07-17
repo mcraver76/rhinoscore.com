@@ -496,7 +496,7 @@ const techSections = [
   },
   {
     title: "Multi-tenant isolation",
-    body: "Every organization's data is isolated at the database layer using PostgreSQL row-level security — not just hidden in the interface. Access is governed by role (what you can do) and scope (which part of the organization you can see), enforcing least privilege by default. A user can only ever reach data their organization and role permit.",
+    body: "Every organization's data is isolated at the database layer using PostgreSQL row-level security — not just hidden in the interface. Access is governed by granular permissions (what you can do) and scope (which part of the organization you can see), enforcing least privilege by default. A user can only ever reach data their organization and permissions allow.",
   },
   {
     title: "Encryption",
@@ -504,7 +504,7 @@ const techSections = [
   },
   {
     title: "Authentication & access control",
-    body: "Secure authentication with granular, role-based permissions — including separate financial-permission controls — so people see exactly what they should and nothing more. Sessions are protected, and access can be granted or revoked at any time.",
+    body: "Secure authentication with granular, per-user permissions — including separate financial-permission controls — so people see exactly what they should and nothing more. Sessions are protected, and permissions can be granted or revoked at any time.",
   },
   {
     title: "Privacy & data ownership",
