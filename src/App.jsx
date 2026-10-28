@@ -3,9 +3,8 @@
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
 import { useEffect, useRef, useState } from "react";
+import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage } from "./sms.jsx";
 
-const OWNER = "Six10 Digital LLC";
-const SUPPORT_EMAIL = "support@rhinoscore.com";
 const DEMO = `mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`;
 
 const pillars = [
@@ -141,9 +140,12 @@ function Footer() {
             <a href="/account">Account &amp; data</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Service</a>
+            <a href="/sms-terms">SMS Terms</a>
+            <a href="/sms-opt-in">SMS opt-in</a>
           </div>
           <div className="footer-col">
             <h4>Contact</h4>
+            <span className="footer-text">{OWNER}</span>
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
           </div>
         </nav>
@@ -425,25 +427,9 @@ function AccountPage() {
   );
 }
 
-/* ---------- privacy + terms ---------- */
+/* ---------- terms (privacy + SMS pages live in sms.jsx) ---------- */
 
 const policySections = {
-  privacy: {
-    title: "Privacy Policy",
-    updated: "Last updated: July 15, 2026",
-    intro: `This policy explains how RhinoScore, a product of ${OWNER}, handles information for people who visit rhinoscore.com or use the RhinoScore platform.`,
-    sections: [
-      { title: "Information We Collect", items: [
-        "Account details such as name, email address, and organization.",
-        "Content and records you create in RhinoScore, and related operational data.",
-        "Basic technical information such as device, browser, and log data.",
-      ] },
-      { title: "How We Use Information", body: "We use information to provide RhinoScore, maintain your account, respond to support requests, improve reliability and security, and meet legal obligations." },
-      { title: "Sharing", body: "We do not sell personal information. We may share information with service providers that help operate RhinoScore, when required by law, or at your direction." },
-      { title: "Your Choices", body: "You can unsubscribe from emails and request access, correction, export, or deletion of your data at any time. See the Account & data page for step-by-step instructions." },
-      { title: "Contact", body: `For privacy questions, contact ${OWNER} at ${SUPPORT_EMAIL}.` },
-    ],
-  },
   terms: {
     title: "Terms of Service",
     updated: "Last updated: July 15, 2026",
@@ -595,7 +581,9 @@ export default function App() {
   else if (path === "/how-it-works") page = <HowPage />;
   else if (path === "/who-its-for") page = <WhoPage />;
   else if (path === "/security" || path === "/technology") page = <SecurityPage />;
-  else if (path === "/privacy") page = <PolicyPage type="privacy" />;
+  else if (path === "/privacy") page = <PrivacyPage />;
+  else if (path === "/sms-terms") page = <SmsTermsPage />;
+  else if (path === "/sms-opt-in") page = <SmsOptInPage />;
   else if (path === "/terms") page = <PolicyPage type="terms" />;
   else if (path === "/account") page = <AccountPage />;
   else page = <Landing />;
