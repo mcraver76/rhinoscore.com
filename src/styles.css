@@ -483,3 +483,45 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
   .nav-cta .button.secondary { display: none; }
   .hero { min-height: auto; }
 }
+
+/* ---------- SMS compliance pages (privacy SMS section, /sms-terms, /sms-opt-in) ---------- */
+.footer-text { display: block; color: var(--ink); font-size: 0.94rem; margin-bottom: 15px; font-weight: 600; }
+.lang-switch { margin-top: 18px; }
+.lang-switch a, .policy-hero a.inline-link { color: var(--cyan); border-bottom: 1px solid rgba(94, 242, 224, 0.35); font-weight: 600; }
+.lang-switch a:hover, .policy-hero a.inline-link:hover { color: var(--ink); }
+.lang-divider { border-top: 1px solid var(--line); margin-top: 12px; }
+.policy-section p + p { margin-top: 14px; }
+.policy-section p { margin: 0; }
+.policy-section .eyebrow + h2 { margin-top: 0; }
+.sms-highlight { border-color: rgba(94, 242, 224, 0.4); background: radial-gradient(520px 200px at 0% 0%, rgba(94, 242, 224, 0.08), transparent 70%), var(--panel); }
+.sms-highlight strong { color: var(--ink); }
+[id] { scroll-margin-top: 96px; }
+
+.optin-grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; padding-block: clamp(44px, 6vw, 64px); }
+.optin-grid .policy-stack { padding-block: 0; }
+@media (max-width: 860px) { .optin-grid { grid-template-columns: 1fr; } .phone-mock { justify-self: center; } }
+
+/* screenshot-style mock of the in-app "Text alerts" screen (light app UI) */
+.phone-mock { margin: 0; width: 100%; max-width: 380px; }
+.pm-frame { border-radius: 40px; padding: 12px; background: #111621; border: 1px solid var(--line-2); box-shadow: var(--shadow), 0 0 0 1px rgba(94, 242, 224, 0.12); }
+.pm-status, .pm-appbar, .pm-body { background: #f6f8fb; color: #1b2330; }
+.pm-status { display: flex; justify-content: space-between; align-items: center; padding: 12px 22px 6px; border-radius: 30px 30px 0 0; font: 600 0.78rem/1 var(--sans); }
+.pm-notch { width: 92px; height: 22px; border-radius: 14px; background: #111621; }
+.pm-appbar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 10px 16px 12px; border-bottom: 1px solid #e3e8ef; font: 500 0.82rem/1.2 var(--sans); }
+.pm-back { color: #0f8f86; }
+.pm-title { font-family: var(--display); font-weight: 700; font-size: 1rem; color: #0b1220; }
+.pm-lang { justify-self: end; color: #0f8f86; font-size: 0.76rem; border: 1px solid #b9e6e1; border-radius: 999px; padding: 3px 9px; }
+.pm-body { padding: 18px 18px 22px; border-radius: 0 0 30px 30px; font-family: var(--sans); }
+.pm-brand { display: flex; align-items: center; gap: 8px; font: 700 0.9rem/1 var(--display); color: #0b1220; }
+.pm-brand img { width: 22px; height: 22px; filter: drop-shadow(0 0 0 #000); }
+.pm-lead { margin: 12px 0 16px; font-size: 0.95rem; line-height: 1.45; color: #1b2330; }
+.pm-label { display: block; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5a6677; margin-bottom: 6px; }
+.pm-input { border: 1px solid #c9d2de; border-radius: 10px; padding: 11px 12px; background: #fff; font-size: 0.98rem; color: #0b1220; }
+.pm-consent { display: grid; grid-template-columns: auto 1fr; gap: 12px; margin-top: 16px; padding: 14px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; }
+.pm-box { width: 22px; height: 22px; border: 2px solid #7a8698; border-radius: 5px; background: #fff; margin-top: 1px; }
+.pm-consent p { margin: 0; font-size: 0.78rem; line-height: 1.5; color: #2a3443; }
+.pm-consent strong { color: #0b1220; }
+.pm-consent a { color: #0b7d75; text-decoration: underline; }
+.pm-button { margin-top: 16px; text-align: center; border-radius: 12px; padding: 12px; background: #0f8f86; color: #fff; font-weight: 700; font-size: 0.95rem; }
+.pm-company { font-weight: 700; color: inherit; border-bottom: 2px dashed #34d8cf; padding-inline: 1px; }
+.policy-section .pm-company { color: var(--cyan); }
