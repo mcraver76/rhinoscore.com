@@ -8,8 +8,8 @@
 export const OWNER = "Six10 Digital LLC";
 export const SUPPORT_EMAIL = "support@rhinoscore.com";
 const PROGRAM = "RhinoScore Alerts";
-const UPDATED_EN = "Last updated: October 28, 2026";
-const UPDATED_ES = "Última actualización: 28 de octubre de 2026";
+const UPDATED_EN = "Last updated: October 29, 2026";
+const UPDATED_ES = "Última actualización: 29 de octubre de 2026";
 
 function Mail({ subject }) {
   const href = subject ? `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}` : `mailto:${SUPPORT_EMAIL}`;
@@ -76,9 +76,9 @@ function SmsPrivacyEn() {
     <section className="policy-section sms-highlight" id="sms">
       <p className="eyebrow">Text messaging</p>
       <h2>13. Text Messaging (SMS)</h2>
-      <p>If you opt in to text messages from a company that uses RhinoScore (for example, your employer or the company you subcontract with), we collect your mobile phone number, your consent record (date, time, wording, and language), and the messages you send and receive. We use this information only to deliver work-related messages from that company and its managers, to send RhinoScore account messages such as sign-in codes, to respond to HELP requests, and to honor opt-outs.</p>
+      <p>If you opt in to text messages from {PROGRAM}, the RhinoScore text program run by {OWNER}, we collect your mobile phone number, your consent record (date, time, wording, and language), and the messages you send and receive. We use this information only to send you {PROGRAM} messages about your RhinoScore account (sign-in codes and work alerts), to respond to HELP requests, and to honor opt-outs.</p>
       <p><strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> Text messaging opt-in data and consent will not be shared with, sold to, or rented to any third party, affiliate, or lead generator. We share phone numbers and message content only with our telecommunications providers (for example, Telnyx) as needed to deliver messages, and as required by law.</p>
-      <p>You can opt out at any time by replying STOP (or PARAR) or by telling your manager. Message frequency varies. Msg &amp; data rates may apply. Carriers are not liable for delayed or undelivered messages. See our <a href="/sms-terms">SMS Terms</a>. Questions: <Mail subject="SMS question" />.</p>
+      <p>You can opt out at any time by replying STOP (or PARAR) or by turning texts off in the app. Message frequency varies. Msg &amp; data rates may apply. Carriers are not liable for delayed or undelivered messages. See our <a href="/sms-terms">SMS Terms</a>. Questions: <Mail subject="SMS question" />.</p>
     </section>
   );
 }
@@ -88,9 +88,9 @@ function SmsPrivacyEs() {
     <section className="policy-section sms-highlight" id="sms-es">
       <p className="eyebrow">Mensajes de texto</p>
       <h2>13. Mensajes de texto (SMS)</h2>
-      <p>Si aceptas recibir mensajes de texto de una empresa que usa RhinoScore (por ejemplo, tu empleador o la empresa con la que trabajas como subcontratista), recopilamos tu número de celular, el registro de tu consentimiento (fecha, hora, texto e idioma) y los mensajes que envías y recibes. Usamos esta información únicamente para entregar mensajes relacionados con el trabajo de esa empresa y sus supervisores, enviar mensajes de la cuenta de RhinoScore como códigos de inicio de sesión, responder a solicitudes de AYUDA y respetar las bajas.</p>
+      <p>Si aceptas recibir mensajes de texto de {PROGRAM}, el programa de mensajes de texto de RhinoScore operado por {OWNER}, recopilamos tu número de celular, el registro de tu consentimiento (fecha, hora, texto e idioma) y los mensajes que envías y recibes. Usamos esta información únicamente para enviarte mensajes de {PROGRAM} sobre tu cuenta de RhinoScore (códigos de inicio de sesión y alertas de trabajo), responder a solicitudes de AYUDA y respetar las bajas.</p>
       <p><strong>No compartiremos tu información móvil con terceros ni afiliados con fines de mercadeo o promoción.</strong> Los datos y el consentimiento de inscripción a mensajes de texto no se compartirán, venderán ni alquilarán a terceros, afiliados ni generadores de clientes potenciales. Solo compartimos números de teléfono y el contenido de los mensajes con nuestros proveedores de telecomunicaciones (por ejemplo, Telnyx) cuando es necesario para entregar los mensajes, y cuando lo exige la ley.</p>
-      <p>Puedes darte de baja en cualquier momento respondiendo STOP (o PARAR) o avisándole a tu supervisor. La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Los operadores no son responsables de mensajes retrasados o no entregados. Consulta nuestros <a href="/sms-terms#es">Términos de SMS</a>. Preguntas: <Mail subject="Pregunta sobre SMS" />.</p>
+      <p>Puedes darte de baja en cualquier momento respondiendo STOP (o PARAR) o desactivando los mensajes en la app. La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Los operadores no son responsables de mensajes retrasados o no entregados. Consulta nuestros <a href="/sms-terms#es">Términos de SMS</a>. Preguntas: <Mail subject="Pregunta sobre SMS" />.</p>
     </section>
   );
 }
@@ -144,10 +144,10 @@ const TERMS = {
   en: {
     eyebrow: "SMS Terms",
     title: `${PROGRAM} — SMS Terms`,
-    intro: `These terms cover text messages sent through RhinoScore, a product of ${OWNER}. RhinoScore is a work-operations app used by companies (for example, cleaning and facilities companies) to coordinate their crews and subcontractors.`,
+    intro: `These terms cover text messages from ${PROGRAM}, sent by ${OWNER}, the maker of RhinoScore. RhinoScore is a work-operations app used by companies (for example, cleaning and facilities companies) to coordinate their crews and subcontractors.`,
     sections: [
       ["Program", <>
-        <p><strong>Program name: {PROGRAM}.</strong> Texts are sent through RhinoScore on behalf of the company you work with, which is named at the start of each message, and by RhinoScore itself for your account. These are operational messages only. We never send marketing or promotional texts in this program.</p>
+        <p><strong>Program name: {PROGRAM}.</strong> All texts in this program come from one sender, {PROGRAM} ({OWNER}), and are about your RhinoScore account. Each message starts with “{PROGRAM}:”. These are operational messages only. We never send marketing or promotional texts in this program.</p>
       </>],
       ["Types of messages", <>
         <ul>
@@ -156,18 +156,17 @@ const TERMS = {
           <li>Schedule changes and shift updates.</li>
           <li>Pay, invoice and document reminders (for example, a missing W-9 or insurance certificate).</li>
           <li>Urgent site alerts (for example, a building closure or an urgent issue at a site).</li>
-          <li>One-to-one messages from your managers, and your replies to them.</li>
         </ul>
       </>],
       ["How to opt in", <>
         <p>You opt in inside the RhinoScore app on the <strong>Text alerts</strong> screen by entering your mobile number and checking an optional box that is <strong>unchecked by default</strong>. A confirmation text is sent right after you opt in. <a href="/sms-opt-in">See what the opt-in screen looks like</a>.</p>
-        <p><strong>Opting in is optional and is not a condition of using RhinoScore or of receiving work.</strong> Your consent is given to the company named on the opt-in screen and is not transferred to anyone else.</p>
+        <p><strong>Opting in is optional and is not a condition of using RhinoScore or of receiving work.</strong> Your consent is given only to {PROGRAM} ({OWNER}) and is not shared with or transferred to anyone else.</p>
       </>],
       ["Frequency and cost", <>
         <p><strong>Message frequency varies</strong> depending on your schedule and activity. <strong>Msg &amp; data rates may apply</strong> according to your mobile plan.</p>
       </>],
       ["How to stop (opt out)", <>
-        <p>Reply <strong>STOP</strong> to any message to opt out at any time. We also accept STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT, PARAR, ALTO, CANCELAR and BAJA, or any reasonable request such as telling your manager. You will receive one confirmation text and then no more texts from that company until you opt in again. To opt back in, reply <strong>START</strong> or turn texts back on in the app.</p>
+        <p>Reply <strong>STOP</strong> to any message to opt out at any time. We also accept STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT, PARAR, ALTO, CANCELAR and BAJA, or any reasonable request such as turning texts off in the app or emailing us. You will receive one confirmation text and then no more texts from {PROGRAM} until you opt in again. To opt back in, reply <strong>START</strong> or turn texts back on in the app.</p>
       </>],
       ["How to get help", <>
         <p>Reply <strong>HELP</strong> (or INFO / AYUDA) to any message for help, or email <Mail subject="SMS help" />.</p>
@@ -186,10 +185,10 @@ const TERMS = {
   es: {
     eyebrow: "Términos de SMS",
     title: `${PROGRAM} — Términos de SMS`,
-    intro: `Estos términos cubren los mensajes de texto enviados a través de RhinoScore, un producto de ${OWNER}. RhinoScore es una app de operaciones de trabajo que usan las empresas (por ejemplo, empresas de limpieza y mantenimiento) para coordinar a sus equipos y subcontratistas.`,
+    intro: `Estos términos cubren los mensajes de texto de ${PROGRAM}, enviados por ${OWNER}, el creador de RhinoScore. RhinoScore es una app de operaciones de trabajo que usan las empresas (por ejemplo, empresas de limpieza y mantenimiento) para coordinar a sus equipos y subcontratistas.`,
     sections: [
       ["Programa", <>
-        <p><strong>Nombre del programa: {PROGRAM}.</strong> Los mensajes se envían a través de RhinoScore en nombre de la empresa con la que trabajas, cuyo nombre aparece al inicio de cada mensaje, y por RhinoScore para tu cuenta. Son solo mensajes operativos. Nunca enviamos mensajes de mercadeo ni promociones en este programa.</p>
+        <p><strong>Nombre del programa: {PROGRAM}.</strong> Todos los mensajes de este programa vienen de un solo remitente, {PROGRAM} ({OWNER}), y tratan sobre tu cuenta de RhinoScore. Cada mensaje comienza con “{PROGRAM}:”. Son solo mensajes operativos. Nunca enviamos mensajes de mercadeo ni promociones en este programa.</p>
       </>],
       ["Tipos de mensajes", <>
         <ul>
@@ -198,18 +197,17 @@ const TERMS = {
           <li>Cambios de horario y actualizaciones de turnos.</li>
           <li>Recordatorios de pagos, facturas y documentos (por ejemplo, un W-9 o un certificado de seguro pendiente).</li>
           <li>Alertas urgentes del sitio (por ejemplo, un edificio cerrado o un problema urgente en un sitio).</li>
-          <li>Mensajes directos de tus supervisores y tus respuestas.</li>
         </ul>
       </>],
       ["Cómo inscribirse", <>
         <p>Te inscribes dentro de la app RhinoScore, en la pantalla <strong>Alertas por texto</strong>, escribiendo tu número de celular y marcando una casilla opcional que <strong>aparece sin marcar</strong>. Después de inscribirte recibirás un mensaje de confirmación. <a href="/sms-opt-in#es">Mira cómo se ve la pantalla de inscripción</a>.</p>
-        <p><strong>Inscribirse es opcional y no es una condición para usar RhinoScore ni para recibir trabajo.</strong> Tu consentimiento es para la empresa indicada en la pantalla de inscripción y no se transfiere a nadie más.</p>
+        <p><strong>Inscribirse es opcional y no es una condición para usar RhinoScore ni para recibir trabajo.</strong> Tu consentimiento es solo para {PROGRAM} ({OWNER}) y no se comparte ni se transfiere a nadie más.</p>
       </>],
       ["Frecuencia y costo", <>
         <p><strong>La frecuencia de los mensajes varía</strong> según tu horario y actividad. <strong>Pueden aplicarse tarifas de mensajes y datos</strong> según tu plan móvil.</p>
       </>],
       ["Cómo cancelar (darse de baja)", <>
-        <p>Responde <strong>STOP</strong> (o <strong>PARAR</strong>) a cualquier mensaje para darte de baja en cualquier momento. También aceptamos ALTO, CANCELAR, BAJA, STOPALL, UNSUBSCRIBE, CANCEL, END y QUIT, o cualquier solicitud razonable, como avisarle a tu supervisor. Recibirás un mensaje de confirmación y luego ningún otro mensaje de esa empresa hasta que te inscribas de nuevo. Para volver a inscribirte, responde <strong>START</strong> o <strong>ALTA</strong>, o activa los mensajes otra vez en la app.</p>
+        <p>Responde <strong>STOP</strong> (o <strong>PARAR</strong>) a cualquier mensaje para darte de baja en cualquier momento. También aceptamos ALTO, CANCELAR, BAJA, STOPALL, UNSUBSCRIBE, CANCEL, END y QUIT, o cualquier solicitud razonable, como desactivar los mensajes en la app o escribirnos por correo. Recibirás un mensaje de confirmación y luego ningún otro mensaje de {PROGRAM} hasta que te inscribas de nuevo. Para volver a inscribirte, responde <strong>START</strong> o <strong>ALTA</strong>, o activa los mensajes otra vez en la app.</p>
       </>],
       ["Cómo obtener ayuda", <>
         <p>Responde <strong>AYUDA</strong> (o HELP / INFO) a cualquier mensaje, o escribe a <Mail subject="Ayuda con SMS" />.</p>
@@ -260,7 +258,7 @@ export function SmsTermsPage() {
 }
 
 /* ================= Public opt-in example ================= */
-// Must match the in-app checkbox text word for word. "Your Company" stands in for each tenant's name.
+// Must match the in-app checkbox text (consent v2) word for word. Two-party: the person and RhinoScore Alerts (Six10 Digital LLC) only.
 
 const OPTIN = {
   en: {
@@ -269,9 +267,8 @@ const OPTIN = {
     lead: "Get urgent work alerts by text message.",
     phoneLabel: "Mobile number",
     phone: "(706) 555-0123",
-    company: "Your Company",
-    consent: (c) => <>
-      <strong>Text me work alerts from {c}.</strong> I agree to receive text messages from {c} through RhinoScore at the mobile number above: sign-in codes, work alerts (such as check-in reminders, schedule changes, pay, invoice and document reminders, and urgent site issues), and messages from my managers. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>HELP</strong> for help or <strong>STOP</strong> to opt out at any time. Agreeing is optional and is not a condition of receiving work. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy#sms">Privacy Policy</a>.
+    consent: <>
+      <strong>Text me RhinoScore Alerts.</strong> I agree to receive text messages from RhinoScore Alerts (Six10 Digital LLC) at the mobile number above about my RhinoScore account: sign-in codes and work alerts (such as check-in reminders, schedule changes, pay, invoice and document reminders, and urgent site issues). Message frequency varies. Msg &amp; data rates may apply. Reply <strong>HELP</strong> for help, <strong>STOP</strong> to opt out. Consent is not a condition of receiving work. See <a href="/sms-terms">SMS Terms</a> and <a href="/privacy#sms">Privacy Policy</a>.
     </>,
     button: "Save",
     lang: "Español",
@@ -282,9 +279,8 @@ const OPTIN = {
     lead: "Recibe alertas urgentes de trabajo por mensaje de texto.",
     phoneLabel: "Número de celular",
     phone: "(706) 555-0123",
-    company: "Su Empresa",
-    consent: (c) => <>
-      <strong>Envíenme alertas de trabajo de {c} por mensaje de texto.</strong> Acepto recibir mensajes de texto de {c} a través de RhinoScore en el número de celular indicado arriba: códigos de inicio de sesión, alertas de trabajo (por ejemplo, recordatorios de registro, cambios de horario, recordatorios de pagos, facturas y documentos, y problemas urgentes en el sitio) y mensajes de mis supervisores. La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Responda <strong>AYUDA</strong> (o HELP) para obtener ayuda o <strong>STOP</strong> (o PARAR) para dejar de recibir mensajes en cualquier momento. Aceptar es opcional y no es una condición para recibir trabajo. Consulte nuestros <a href="/sms-terms#es">Términos de SMS</a> y nuestra <a href="/privacy#es">Política de Privacidad</a>.
+    consent: <>
+      <strong>Envíenme Alertas de RhinoScore.</strong> Acepto recibir mensajes de texto de RhinoScore Alerts (Six10 Digital LLC) en el número de celular indicado arriba sobre mi cuenta de RhinoScore: códigos de inicio de sesión y alertas de trabajo (por ejemplo, recordatorios de registro, cambios de horario, recordatorios de pagos, facturas y documentos, y problemas urgentes en el sitio). La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Responde <strong>HELP</strong> o <strong>AYUDA</strong> para obtener ayuda, <strong>STOP</strong> o <strong>PARAR</strong> para cancelar. El consentimiento no es una condición para recibir trabajo. Consulta los <a href="/sms-terms#es">Términos de SMS</a> y la <a href="/privacy#es">Política de privacidad</a>.
     </>,
     button: "Guardar",
     lang: "English",
@@ -293,7 +289,6 @@ const OPTIN = {
 
 function PhoneMock({ lang }) {
   const t = OPTIN[lang];
-  const company = <span className="pm-company">{t.company}</span>;
   return (
     <figure className="phone-mock" lang={lang} aria-label={lang === "es" ? "Ejemplo de la pantalla de inscripción" : "Example of the opt-in screen"}>
       <div className="pm-frame">
@@ -310,7 +305,7 @@ function PhoneMock({ lang }) {
           <div className="pm-input">{t.phone}</div>
           <div className="pm-consent">
             <span className="pm-box" role="img" aria-label={lang === "es" ? "Casilla sin marcar" : "Unchecked checkbox"} />
-            <p>{t.consent(company)}</p>
+            <p>{t.consent}</p>
           </div>
           <div className="pm-button">{t.button}</div>
         </div>
@@ -345,8 +340,8 @@ export function SmsOptInPage() {
               </ul>
             </section>
             <section className="policy-section">
-              <h2>Every company gets the same opt-in</h2>
-              <p>Each company that uses RhinoScore gets this same opt-in screen, with its own company name where <span className="pm-company">Your Company</span> appears above. Consent is given to that one named company and is not shared with anyone else for marketing.</p>
+              <h2>One sender, one opt-in</h2>
+              <p>Everyone who uses RhinoScore sees this same opt-in. Texts come only from RhinoScore Alerts (Six10 Digital LLC); your number and consent are never shared with or sold to anyone.</p>
               <p className="smallprint">RhinoScore is a product of {OWNER}. Questions: <Mail subject="SMS opt-in question" />.</p>
             </section>
           </div>
@@ -373,8 +368,8 @@ export function SmsOptInPage() {
               </ul>
             </section>
             <section className="policy-section">
-              <h2>Cada empresa recibe la misma inscripción</h2>
-              <p>Cada empresa que usa RhinoScore recibe esta misma pantalla de inscripción, con su propio nombre donde aparece <span className="pm-company">Su Empresa</span>. El consentimiento es para esa empresa y no se comparte con nadie más con fines de mercadeo.</p>
+              <h2>Un solo remitente, una sola inscripción</h2>
+              <p>Todas las personas que usan RhinoScore ven esta misma inscripción. Los mensajes vienen únicamente de RhinoScore Alerts (Six10 Digital LLC); tu número y tu consentimiento nunca se comparten ni se venden a nadie.</p>
               <p className="smallprint">RhinoScore es un producto de {OWNER}. Preguntas: <Mail subject="Pregunta sobre inscripción SMS" />.</p>
             </section>
           </div>
