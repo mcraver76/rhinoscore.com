@@ -10,8 +10,8 @@ export const DEMO_HREF = "mailto:support@rhinoscore.com?subject=RhinoScore%20dem
 export const ROUTES = [
   {
     path: "/",
-    title: "RhinoScore | Operations software for service companies",
-    description: "Inspections, crews, work orders, subcontractors, safety training and estimates in one place, so service companies see what needs attention before customers do. English and Spanish.",
+    title: "RhinoScore — Operational Intelligence Platform",
+    description: "The Operational Intelligence Platform. Run every site from one screen: inspections, teams, work orders, subcontractors and customer reporting together. Manage exceptions, not data. English and Spanish.",
   },
   {
     path: "/platform",

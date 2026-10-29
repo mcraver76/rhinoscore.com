@@ -7,7 +7,7 @@ import { DEMO_HREF as DEMO } from "./routes.js";
 
 const problems = [
   "Updates come by text, phone call and paper.",
-  "You hear about a missed area when the customer calls.",
+  "You hear about a problem when the customer calls.",
   "Pay, invoices and paperwork take hours to piece together.",
 ];
 
@@ -69,17 +69,17 @@ export function HomePage() {
       <section className="home-hero">
         <div className="wrap home-hero-grid">
           <div className="home-hero-copy">
-            <span className="eyebrow">Operational Intelligence Platform</span>
-            <h1>Run every site from <em>one screen</em>.</h1>
+            <h1>The Operational Intelligence Platform.</h1>
+            <p className="hero-sub">Run every site from one screen, <em>and manage exceptions, not data.</em></p>
             <p className="lede">
-              RhinoScore brings your inspections, crews, work orders, subcontractors and customer reporting
-              together, and tells you what needs attention before your customer notices.
+              RhinoScore brings your people, sites, work and customer reporting together, and tells you what needs
+              attention before your customer notices.
             </p>
             <div className="hero-actions">
               <a className="button primary" href={DEMO}>Request a demo</a>
               <a className="button secondary" href="/how-it-works">See how it works</a>
             </div>
-            <p className="hero-note">Built for service companies with crews in many locations. English and Spanish.</p>
+            <p className="hero-note">Built for teams across many locations. English and Spanish.</p>
           </div>
           <Devices />
         </div>
@@ -91,6 +91,7 @@ export function HomePage() {
           <ul className="problem-list">
             {problems.map((p) => (<li key={p}><span className="dash" aria-hidden="true" />{p}</li>))}
           </ul>
+          <p className="problem-close">Owners manage <b>exceptions</b>, not data.</p>
         </div>
       </section>
 

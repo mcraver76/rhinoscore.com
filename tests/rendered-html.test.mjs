@@ -15,13 +15,16 @@ test("builds a React and Vite app", async () => {
     read("../package.json"),
   ]);
 
-  assert.match(html, /<title>RhinoScore \| Operations software for service companies<\/title>/);
+  assert.match(html, /<title>RhinoScore — Operational Intelligence Platform<\/title>/);
   assert.match(html, /\/assets\/index-/);
   assert.ok(assets.some((file) => file.endsWith(".js")));
   assert.ok(assets.some((file) => file.endsWith(".css")));
   assert.match(packageJson, /"dev": "vite --host 127\.0\.0\.1"/);
   assert.doesNotMatch(packageJson, /vinext|next|wrangler/i);
-  assert.match(home, /Run every site from/);
+  assert.match(home, /The Operational Intelligence Platform\./);
+  assert.match(home, /Run every site from one screen, <em>and manage exceptions, not data\.<\/em>/);
+  assert.doesNotMatch(home, /missed area|service companies with crews/);
+  assert.match(home, /Owners manage <b>exceptions<\/b>, not data\./);
   assert.match(app, /Privacy Policy/);
   assert.match(app, /Terms of Service/);
   assert.match(app, /Sign in/);

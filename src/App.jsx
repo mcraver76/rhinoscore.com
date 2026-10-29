@@ -120,8 +120,8 @@ function Footer() {
         <div className="footer-brand">
           <Brand />
           <p className="owner-note">
-            Operations software for service companies: inspections, crews,
-            work orders, subcontractors and customer reporting in one place.
+            The Operational Intelligence Platform: clarity, accountability and
+            actionable priorities for organizations with many locations.
           </p>
           <p className="owner-note">
             RhinoScore is owned and operated by <b>{OWNER}</b>.

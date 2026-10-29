@@ -425,7 +425,13 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .home-hero { padding-block: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px); }
 .home-hero-grid { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
 .home-hero h1 { margin-top: 20px; font-size: clamp(2.5rem, 5.2vw, 4.4rem); line-height: 1.02; }
-.home-hero .lede { margin-top: 22px; }
+.home-hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.4rem); line-height: 1.04; }
+.hero-sub { margin-top: 22px; font-family: var(--display); font-weight: 700; font-size: clamp(1.35rem, 2.3vw, 1.85rem); line-height: 1.25; color: var(--ink); letter-spacing: -0.015em; }
+.hero-sub em { font-style: normal; color: var(--cyan); }
+.hero-kicker { font-family: var(--display); font-weight: 600; font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--cyan); letter-spacing: 0; margin-bottom: 14px; }
+.hero-mantra { margin-top: 12px; font-family: var(--display); font-weight: 800; font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.2; color: var(--ink); letter-spacing: -0.02em; }
+.hero-mantra em { font-style: normal; color: var(--cyan); }
+.home-hero .lede { margin-top: 20px; }
 .home-hero .hero-actions { margin-top: 32px; }
 .home-hero .hero-note { margin-top: 20px; }
 
@@ -455,6 +461,8 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .home-problem h2 span { color: var(--ink-mute); }
 .problem-list { list-style: none; margin: 34px 0 0; padding: 0; display: grid; gap: 16px; max-width: 640px; }
 .problem-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 1.12rem; color: var(--ink-soft); line-height: 1.5; }
+.problem-close { margin-top: 30px; font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--ink); letter-spacing: -0.015em; }
+.problem-close b { color: var(--hot); }
 .problem-list .dash { margin-top: 13px; width: 16px; background: var(--hot); height: 2px; }
 
 .features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
