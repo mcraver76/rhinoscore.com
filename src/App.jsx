@@ -2,10 +2,10 @@
 // Minimal, single-screen landing (immersive hero) + separate pages that explain.
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
-
-const DEMO = `mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`;
+import { HomePage } from "./home.jsx";
+import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
 const pillars = [
   ["Operational Visibility", "Know what's happening, know what isn't, and know what changed — across every location, in one connected view."],
@@ -83,7 +83,7 @@ function Nav() {
           })}
         </nav>
         <div className="nav-cta">
-          <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>
+          <a className="button secondary" href={APP_URL}>Sign in</a>
           <a className="button primary" href={DEMO}>Request a demo</a>
         </div>
         <button
@@ -105,6 +105,7 @@ function Nav() {
             );
           })}
           <a className="button primary" href={DEMO}>Request a demo</a>
+          <a className="button secondary" href={APP_URL}>Sign in</a>
           <a className="button secondary" href={`mailto:${SUPPORT_EMAIL}`}>Talk to us</a>
         </nav>
       )}
@@ -119,8 +120,8 @@ function Footer() {
         <div className="footer-brand">
           <Brand />
           <p className="owner-note">
-            The Operational Intelligence Platform — clarity, accountability, and
-            actionable priorities for complex, multi-location organizations.
+            The Operational Intelligence Platform: clarity, accountability and
+            actionable priorities for organizations with many locations.
           </p>
           <p className="owner-note">
             RhinoScore is owned and operated by <b>{OWNER}</b>.
@@ -134,6 +135,7 @@ function Footer() {
             <a href="/who-its-for">Who it's for</a>
             <a href="/security">Security</a>
             <a href={DEMO}>Request a demo</a>
+            <a href={APP_URL}>Sign in</a>
           </div>
           <div className="footer-col">
             <h4>Legal &amp; data</h4>
@@ -155,37 +157,6 @@ function Footer() {
         <span>RhinoScore is a product of {OWNER}.</span>
       </div>
     </footer>
-  );
-}
-
-/* ---------- Landing (minimal, single screen) ---------- */
-
-function Landing() {
-  return (
-    <section className="landing">
-      <div className="landing-col">
-        <div className="landing-inner">
-          <span className="hud-c tl" aria-hidden="true" />
-          <span className="hud-c tr" aria-hidden="true" />
-          <span className="hud-c bl" aria-hidden="true" />
-          <span className="hud-c br" aria-hidden="true" />
-          <div className="hud-bar">
-            <span className="hud-bar-id">Operational Intelligence Platform</span>
-            <span className="hud-bar-live"><span className="hud-live" aria-hidden="true" />Live</span>
-          </div>
-          <h1>RhinoScore turns operational complexity into <em>clear, actionable intelligence</em>.</h1>
-          <p className="lede">
-            Know what needs attention before it becomes a bigger problem — so
-            leaders manage exceptions, not data.
-          </p>
-        </div>
-        <div className="hero-actions">
-          <a className="button primary" href={DEMO}>Request a demo</a>
-          <a className="button secondary" href="/platform">Explore the platform</a>
-        </div>
-      </div>
-      <a className="scroll-hint" href="/platform">See what it does <span aria-hidden="true">↓</span></a>
-    </section>
   );
 }
 
@@ -462,7 +433,7 @@ function SecurityPage() {
 
           <section className="policy-section">
             <p className="eyebrow">03 · Encryption</p>
-            <h2>Encryption</h2>
+            <h2>Encrypted in transit and at rest</h2>
             <p>Data is encrypted in transit (TLS) between your browser and our services, and at rest on our managed database and storage platform. Credentials and API keys are held server-side only — never exposed to the browser.</p>
           </section>
 
@@ -519,42 +490,48 @@ function SecurityPage() {
 
 /* ---------- router ---------- */
 
+function NotFoundPage() {
+  return (
+    <main>
+      <section className="policy-hero">
+        <div className="wrap">
+          <p className="updated">404</p>
+          <h1>We can't find that page.</h1>
+          <p>The link may be old or mistyped. Try the <a className="inline-link" href="/">home page</a>, or <a className="inline-link" href={DEMO}>request a demo</a>.</p>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+const PAGES = {
+  "/": HomePage,
+  "/platform": PlatformPage,
+  "/how-it-works": HowPage,
+  "/who-its-for": WhoPage,
+  "/security": SecurityPage,
+  "/privacy": PrivacyPage,
+  "/sms-terms": SmsTermsPage,
+  "/sms-opt-in": SmsOptInPage,
+  "/terms": TermsPage,
+  "/account": AccountPage,
+};
+
 export default function App() {
-  const videoRef = useRef(null);
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-    v.playbackRate = 0.6;
-    const p = v.play();
-    if (p && p.catch) p.catch(() => {});
-  }, []);
-
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const route = routeFor(path === "/technology" ? "/security" : path);
+  const Page = route ? PAGES[route.path] : NotFoundPage;
 
-  let page;
-  if (path === "/platform") page = <PlatformPage />;
-  else if (path === "/how-it-works") page = <HowPage />;
-  else if (path === "/who-its-for") page = <WhoPage />;
-  else if (path === "/security" || path === "/technology") page = <SecurityPage />;
-  else if (path === "/privacy") page = <PrivacyPage />;
-  else if (path === "/sms-terms") page = <SmsTermsPage />;
-  else if (path === "/sms-opt-in") page = <SmsOptInPage />;
-  else if (path === "/terms") page = <TermsPage />;
-  else if (path === "/account") page = <AccountPage />;
-  else page = <Landing />;
+  useEffect(() => {
+    document.title = (route || NOT_FOUND).title;
+  }, [route]);
 
   return (
     <>
-      <div className="site-bg" aria-hidden="true">
-        <video ref={videoRef} className="site-bg-video" autoPlay muted loop playsInline preload="auto">
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        <div className="site-bg-veil" />
-      </div>
+      <div className="site-bg" aria-hidden="true" />
       <OwnerBar />
       <Nav />
-      {page}
+      <Page />
       <Footer />
     </>
   );
