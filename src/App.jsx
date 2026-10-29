@@ -3,7 +3,7 @@
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
 import { useEffect, useRef, useState } from "react";
-import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage } from "./sms.jsx";
+import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
 
 const DEMO = `mailto:${SUPPORT_EMAIL}?subject=RhinoScore%20demo%20request`;
 
@@ -427,51 +427,7 @@ function AccountPage() {
   );
 }
 
-/* ---------- terms (privacy + SMS pages live in sms.jsx) ---------- */
-
-const policySections = {
-  terms: {
-    title: "Terms of Service",
-    updated: "Last updated: July 15, 2026",
-    intro: `These terms govern your use of RhinoScore, a product of ${OWNER}.`,
-    sections: [
-      { title: "Use of RhinoScore", body: "RhinoScore provides operational visibility, accountability, and reporting tools. You are responsible for the information you enter and for using the platform in accordance with applicable laws and your organization's policies." },
-      { title: "Accounts", body: "You agree to provide accurate account information and to keep your sign-in credentials secure. Contact us if you believe your account has been accessed without permission." },
-      { title: "Your Content", body: `You retain responsibility for the content and records entered into RhinoScore. You grant ${OWNER} permission to process that content as needed to provide the service.` },
-      { title: "Service Changes", body: "RhinoScore may update, improve, suspend, or discontinue features as the product evolves. We aim to communicate material changes clearly when they affect you." },
-      { title: "Governing Law & Contact", body: `These terms are governed by the laws of the State of Georgia, United States. Questions can be sent to ${OWNER} at ${SUPPORT_EMAIL}.` },
-    ],
-  },
-};
-
-function PolicyPage({ type }) {
-  const page = policySections[type];
-  return (
-    <main>
-      <section className="policy-hero">
-        <div className="wrap">
-          <p className="updated">{page.updated}</p>
-          <h1>{page.title}</h1>
-          <p>{page.intro}</p>
-        </div>
-      </section>
-      <div className="wrap">
-        <div className="policy-stack">
-          {page.sections.map((s) => (
-            <section className="policy-section" key={s.title}>
-              <h2>{s.title}</h2>
-              {s.items ? (
-                <ul>{s.items.map((it) => (<li key={it}>{it}</li>))}</ul>
-              ) : (
-                <p>{s.body}</p>
-              )}
-            </section>
-          ))}
-        </div>
-      </div>
-    </main>
-  );
-}
+/* terms, privacy and SMS pages live in sms.jsx */
 
 /* ---------- security · trust & architecture ---------- */
 
@@ -584,7 +540,7 @@ export default function App() {
   else if (path === "/privacy") page = <PrivacyPage />;
   else if (path === "/sms-terms") page = <SmsTermsPage />;
   else if (path === "/sms-opt-in") page = <SmsOptInPage />;
-  else if (path === "/terms") page = <PolicyPage type="terms" />;
+  else if (path === "/terms") page = <TermsPage />;
   else if (path === "/account") page = <AccountPage />;
   else page = <Landing />;
 

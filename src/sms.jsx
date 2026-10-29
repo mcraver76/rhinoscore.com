@@ -1,5 +1,6 @@
 // RhinoScore — SMS / A2P 10DLC compliance pages (English + Spanish on each page).
 //   /privacy     Privacy Policy (same text as the in-app policy, src/legal.js in the app repo) + SMS section
+//   /terms       Terms of Service (word for word from TERMS_DOC / TERMS_DOC_ES in the app's src/legal.js)
 //   /sms-terms   SMS Terms for the "RhinoScore Alerts" program
 //   /sms-opt-in  Public copy of the in-app "Text alerts" opt-in screen (carrier reviewers can't log in)
 // Wording drafted from carrier/CTIA requirements. LAWYER REVIEW REQUIRED before relying on it;
@@ -132,6 +133,84 @@ export function PrivacyPage() {
         <div className="policy-stack">
           <SectionList rows={PRIVACY_ES} />
           <SmsPrivacyEs />
+        </div>
+      </div>
+    </main>
+  );
+}
+
+/* ================= Terms of Service ================= */
+// Word for word from TERMS_DOC / TERMS_DOC_ES in the app (rhinoscore/src/legal.js, LEGAL_VERSION 2026-10-25) —
+// the same contract users accept in the app. When legal.js changes, update this copy and the dates below.
+
+const LEGAL_VERSION = "2026-10-25";
+const LEGAL_EFFECTIVE = "October 25, 2026";
+const LEGAL_EFFECTIVE_ES = "25 de octubre de 2026";
+const CO = "RhinoScore";
+const CONTACT = "legal@rhinoscore.com";
+
+const TOS_EN = [
+  ["1. Agreement", `These Terms of Service ("Terms") govern your access to and use of the ${CO} software, websites, and related services (the "Service"). By creating an account or using the Service, you agree to these Terms. If you are agreeing on behalf of a company, you represent that you are authorized to bind that company.`],
+  ["2. Accounts", "You are responsible for the information you provide, for keeping your password secure, and for all activity under your account. Notify us promptly of any unauthorized use. You must be at least 18 years old to use the Service."],
+  ["3. Acceptable use", "You agree not to misuse the Service — including attempting to access it in an unauthorized way, disrupting it, uploading unlawful or infringing content, or using it to violate the rights of others. You are responsible for the content and data you and your team upload (including photos, invoices, and customer information) and for having the rights to use it. You agree that check-ins, check-outs, photos and other records you submit are accurate and are your own."],
+  ["4. Your data", "Data you upload remains yours. You grant us the limited rights needed to host, process, and display it in order to operate the Service for you. We handle personal data as described in our Privacy Policy."],
+  ["5. Fees", "Paid plans are billed in advance on a recurring basis and are non-refundable except where required by law. We may change pricing with reasonable advance notice. Failure to pay may result in suspension of the Service."],
+  ["6. Availability", "We work to keep the Service available but do not guarantee it will be uninterrupted or error-free. We may modify, suspend, or discontinue features from time to time."],
+  ["7. Termination", "You may stop using the Service at any time. We may suspend or terminate access if you breach these Terms or use the Service in a way that could cause harm or legal exposure. On termination you may request an export of your data for a reasonable period."],
+  ["8. Disclaimers", `The Service is provided "as is" without warranties of any kind, to the fullest extent permitted by law. ${CO} is a record-keeping and workflow tool and is not responsible for the quality of cleaning or maintenance work documented within it, or for the pay, contract or employment terms between you and the company you work with.`],
+  ["9. Limitation of liability", `To the fullest extent permitted by law, ${CO} will not be liable for indirect, incidental, special, or consequential damages, or for lost profits, lost data, or business interruption, even if advised of the possibility. Our total aggregate liability for any and all claims arising out of or relating to the Service or these Terms will not exceed the amounts you paid us in the twelve months before the event giving rise to the claim. These limitations apply regardless of the legal theory and are an essential basis of the agreement between us.`],
+  ["10. Indemnification (hold harmless)", `You agree to indemnify, defend, and hold harmless ${CO}, its owners, officers, and personnel from and against any third-party claims, demands, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising out of or related to the content and data you upload, your use of the Service, your violation of these Terms, or your violation of any law or the rights of any third party.`],
+  ["11. Exclusive remedies", `The remedies expressly stated in these Terms are your sole and exclusive remedies. If you are dissatisfied with the Service, your sole and exclusive remedy is to stop using it. The disclaimers in the "Disclaimers" section and the caps in the "Limitation of liability" section are an essential part of the agreement between us and will survive even if an exclusive remedy is found to have failed of its essential purpose.`],
+  ["12. Changes", "We may update these Terms. If we make material changes, we will notify you and ask you to accept them, and continued use after the changes take effect means you accept the updated Terms."],
+  ["13. Language", "These Terms are provided in English and Spanish. The Spanish version is a courtesy translation; if the two differ, the English version controls."],
+  ["14. Contact", `Questions about these Terms: ${CONTACT}.`],
+];
+
+const TOS_ES_NOTE = "Traducción de cortesía. Si hay alguna diferencia, prevalece la versión en inglés.";
+
+const TOS_ES = [
+  ["1. Acuerdo", `Estos Términos de servicio ("Términos") rigen tu acceso y uso del software, los sitios web y los servicios relacionados de ${CO} (el "Servicio"). Al crear una cuenta o usar el Servicio, aceptas estos Términos. Si aceptas en nombre de una empresa, declaras que tienes autorización para obligar a esa empresa.`],
+  ["2. Cuentas", "Eres responsable de la información que proporcionas, de mantener tu contraseña segura y de toda la actividad en tu cuenta. Avísanos de inmediato si alguien usa tu cuenta sin permiso. Debes tener al menos 18 años para usar el Servicio."],
+  ["3. Uso aceptable", "Aceptas no hacer mal uso del Servicio — incluido intentar acceder sin autorización, interrumpirlo, subir contenido ilegal o que infrinja derechos, o usarlo para violar los derechos de otros. Eres responsable del contenido y los datos que tú y tu equipo suben (incluidas fotos, facturas e información de clientes) y de tener derecho a usarlos. Aceptas que los registros de entrada y salida, las fotos y demás información que envías son correctos y son tuyos."],
+  ["4. Tus datos", "Los datos que subes siguen siendo tuyos. Nos das los derechos limitados necesarios para alojarlos, procesarlos y mostrarlos para operar el Servicio. Manejamos los datos personales como se describe en nuestra Política de privacidad."],
+  ["5. Tarifas", "Los planes de pago se cobran por adelantado de forma recurrente y no son reembolsables, salvo cuando la ley lo exija. Podemos cambiar los precios con un aviso razonable. La falta de pago puede suspender el Servicio."],
+  ["6. Disponibilidad", "Trabajamos para mantener el Servicio disponible, pero no garantizamos que funcione sin interrupciones ni errores. Podemos modificar, suspender o descontinuar funciones de vez en cuando."],
+  ["7. Terminación", "Puedes dejar de usar el Servicio en cualquier momento. Podemos suspender o terminar el acceso si incumples estos Términos o usas el Servicio de una forma que pueda causar daño o riesgo legal. Al terminar, puedes pedir una copia de tus datos durante un periodo razonable."],
+  ["8. Exenciones", `El Servicio se ofrece "tal cual", sin garantías de ningún tipo, en la medida máxima permitida por la ley. ${CO} es una herramienta de registro y flujo de trabajo y no es responsable de la calidad del trabajo de limpieza o mantenimiento que se documenta en ella, ni de los pagos, contratos o condiciones de trabajo entre tú y la empresa con la que trabajas.`],
+  ["9. Limitación de responsabilidad", `En la medida máxima permitida por la ley, ${CO} no será responsable por daños indirectos, incidentales, especiales o consecuentes, ni por pérdida de ganancias, de datos o interrupción del negocio, aunque se haya advertido de esa posibilidad. Nuestra responsabilidad total por cualquier reclamo relacionado con el Servicio o estos Términos no superará lo que nos pagaste en los doce meses anteriores al hecho que dio origen al reclamo. Estas limitaciones aplican sin importar la teoría legal y son una base esencial del acuerdo.`],
+  ["10. Indemnización", `Aceptas indemnizar, defender y mantener libre de responsabilidad a ${CO}, sus dueños, directivos y personal frente a reclamos, demandas, daños, pérdidas, responsabilidades y gastos de terceros (incluidos honorarios razonables de abogados) que surjan del contenido y los datos que subes, tu uso del Servicio, tu incumplimiento de estos Términos o tu violación de cualquier ley o de los derechos de terceros.`],
+  ["11. Recursos exclusivos", `Los recursos indicados expresamente en estos Términos son tus únicos recursos. Si no estás satisfecho con el Servicio, tu único recurso es dejar de usarlo. Las exenciones y los límites de responsabilidad son parte esencial del acuerdo y siguen vigentes aunque un recurso exclusivo no cumpla su propósito.`],
+  ["12. Cambios", "Podemos actualizar estos Términos. Si hacemos cambios importantes, te avisaremos y te pediremos que los aceptes; seguir usando el Servicio después de que entren en vigor significa que aceptas los Términos actualizados."],
+  ["13. Idioma", "Estos Términos se ofrecen en inglés y en español. La versión en español es una traducción de cortesía; si hay alguna diferencia, prevalece la versión en inglés."],
+  ["14. Contacto", `Preguntas sobre estos Términos: ${CONTACT}.`],
+];
+
+export function TermsPage() {
+  return (
+    <main>
+      <section className="policy-hero">
+        <div className="wrap" data-legal-version={LEGAL_VERSION}>
+          <p className="updated">Effective: {LEGAL_EFFECTIVE}</p>
+          <h1>Terms of Service</h1>
+          <p>These are the same Terms of Service you accept in the RhinoScore app. RhinoScore is a product of {OWNER}. Text messages are also covered by our <a className="inline-link" href="/sms-terms">SMS Terms</a>.</p>
+          <LangSwitch to="#es" label="Leer en español" />
+        </div>
+      </section>
+      <div className="wrap">
+        <div className="policy-stack">
+          <SectionList rows={TOS_EN} />
+        </div>
+      </div>
+
+      <LangDivider
+        id="es"
+        lang="es"
+        title="Términos de servicio"
+        sub={`Vigentes desde: ${LEGAL_EFFECTIVE_ES}. RhinoScore es un producto de ${OWNER}. ${TOS_ES_NOTE}`}
+      />
+      <div className="wrap" lang="es">
+        <div className="policy-stack">
+          <SectionList rows={TOS_ES} />
         </div>
       </div>
     </main>
