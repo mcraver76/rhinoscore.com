@@ -22,7 +22,8 @@ test("builds a React and Vite app", async () => {
   assert.match(packageJson, /"dev": "vite --host 127\.0\.0\.1"/);
   assert.doesNotMatch(packageJson, /vinext|next|wrangler/i);
   assert.match(home, /The Operational Intelligence Platform\./);
-  assert.match(home, /Run every site from one screen, <em>and manage exceptions, not data\.<\/em>/);
+  assert.match(home, /<p className="hero-kicker">Run every site from one screen\.<\/p>/);
+  assert.match(home, /Manage exceptions, <em>not data\.<\/em>/);
   assert.doesNotMatch(home, /missed area|service companies with crews/);
   assert.match(home, /Owners manage <b>exceptions<\/b>, not data\./);
   assert.match(app, /Privacy Policy/);

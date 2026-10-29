@@ -69,8 +69,9 @@ export function HomePage() {
       <section className="home-hero">
         <div className="wrap home-hero-grid">
           <div className="home-hero-copy">
+            <p className="hero-kicker">Run every site from one screen.</p>
             <h1>The Operational Intelligence Platform.</h1>
-            <p className="hero-sub">Run every site from one screen, <em>and manage exceptions, not data.</em></p>
+            <p className="hero-sub">Manage exceptions, <em>not data.</em></p>
             <p className="lede">
               RhinoScore brings your people, sites, work and customer reporting together, and tells you what needs
               attention before your customer notices.

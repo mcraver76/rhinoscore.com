@@ -16,7 +16,7 @@ export const ROUTES = [
   {
     path: "/platform",
     title: "The platform | RhinoScore",
-    description: "How RhinoScore gives service companies visibility, accountability and clear priorities across every site, crew and customer.",
+    description: "The Operational Intelligence Platform: visibility, accountability and clear priorities across every location. Manage exceptions, not data.",
   },
   {
     path: "/how-it-works",
