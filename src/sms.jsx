@@ -54,7 +54,7 @@ const PRIVACY_EN = [
   ["9. Your choices", "You can access and update your profile, opt out of marketing email, and request a copy or deletion of your personal data by contacting us. Some data may be retained where required for legal or legitimate business reasons. See the Account & data page for step-by-step instructions."],
   ["10. Children", "The Service is not directed to children under 18, and we do not knowingly collect their information."],
   ["11. Changes", "We may update this Policy. If we make material changes we will notify you and update the effective date."],
-  ["12. Contact", "Questions or privacy requests: legal@rhinoscore.com or support@rhinoscore.com."],
+  ["12. Contact", "Questions or privacy requests: info@rhinoscore.com or support@rhinoscore.com."],
 ];
 
 const PRIVACY_ES = [
@@ -69,7 +69,7 @@ const PRIVACY_ES = [
   ["9. Tus opciones", "Puedes ver y actualizar tu perfil, darte de baja de correos de mercadeo y pedir una copia o la eliminación de tus datos personales escribiéndonos. Algunos datos pueden conservarse cuando se requiera por razones legales o comerciales legítimas."],
   ["10. Menores", "El Servicio no está dirigido a menores de 18 años y no recopilamos su información a sabiendas."],
   ["11. Cambios", "Podemos actualizar esta Política. Si hacemos cambios importantes, te avisaremos y actualizaremos la fecha de vigencia."],
-  ["12. Contacto", "Preguntas o solicitudes de privacidad: legal@rhinoscore.com o support@rhinoscore.com."],
+  ["12. Contacto", "Preguntas o solicitudes de privacidad: info@rhinoscore.com o support@rhinoscore.com."],
 ];
 
 function SmsPrivacyEn() {
@@ -147,7 +147,7 @@ const LEGAL_VERSION = "2026-10-25";
 const LEGAL_EFFECTIVE = "October 25, 2026";
 const LEGAL_EFFECTIVE_ES = "25 de octubre de 2026";
 const CO = "RhinoScore";
-const CONTACT = "legal@rhinoscore.com";
+const CONTACT = "info@rhinoscore.com";
 
 const TOS_EN = [
   ["1. Agreement", `These Terms of Service ("Terms") govern your access to and use of the ${CO} software, websites, and related services (the "Service"). By creating an account or using the Service, you agree to these Terms. If you are agreeing on behalf of a company, you represent that you are authorized to bind that company.`],
