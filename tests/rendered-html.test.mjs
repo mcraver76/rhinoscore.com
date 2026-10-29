@@ -49,13 +49,16 @@ test("404 page, sitemap and robots", async () => {
   assert.match(robots, /Sitemap: https:\/\/rhinoscore\.com\/sitemap\.xml/);
 });
 
-test("no background video, every image has alt text, no mailto demo button", async () => {
+test("no background video, every image has alt text, demo link goes to support@", async () => {
   const files = await readdir(new URL("../dist/", import.meta.url));
   assert.ok(!files.includes("hero.mp4"));
   for (const f of ["../src/App.jsx", "../src/home.jsx", "../src/sms.jsx"]) {
     const src = await read(f);
     for (const tag of src.match(/<img\b[^>]*>/g) || []) assert.match(tag, /\balt=/, `${f}: ${tag}`);
   }
-  const app = await read("../src/App.jsx");
-  assert.doesNotMatch(app, /demo%20request/i);
+  const routes = await read("../src/routes.js");
+  assert.match(routes, /DEMO_HREF = "mailto:support@rhinoscore\.com/);
+  for (const f of ["../src/App.jsx", "../src/home.jsx", "../src/sms.jsx", "../src/routes.js"]) {
+    assert.doesNotMatch(await read(f), /(legal|info)@rhinoscore\.com/, f);
+  }
 });

@@ -4,6 +4,8 @@
 export const SITE = "https://rhinoscore.com";
 export const APP_URL = "https://app.rhinoscore.com";
 export const OG_IMAGE = `${SITE}/og-image.jpg`;
+// Where every "Request a demo" button goes (email for now; the /demo form ships in its own PR).
+export const DEMO_HREF = "mailto:support@rhinoscore.com?subject=RhinoScore%20demo%20request";
 
 export const ROUTES = [
   {
@@ -30,11 +32,6 @@ export const ROUTES = [
     path: "/security",
     title: "Security, trust & architecture | RhinoScore",
     description: "How RhinoScore keeps your data isolated, encrypted, access-controlled and exportable. Infrastructure, AI use and engineering practices explained.",
-  },
-  {
-    path: "/demo",
-    title: "Request a demo | RhinoScore",
-    description: "Ask for a short RhinoScore walkthrough tailored to how your service company runs. No pressure, no jargon.",
   },
   {
     path: "/account",

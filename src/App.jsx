@@ -4,10 +4,8 @@
 
 import { useEffect, useState } from "react";
 import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
-import { DemoPage, HomePage } from "./home.jsx";
-import { APP_URL, NOT_FOUND, routeFor } from "./routes.js";
-
-const DEMO = "/demo";
+import { HomePage } from "./home.jsx";
+import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
 const pillars = [
   ["Operational Visibility", "Know what's happening, know what isn't, and know what changed — across every location, in one connected view."],
@@ -435,7 +433,7 @@ function SecurityPage() {
 
           <section className="policy-section">
             <p className="eyebrow">03 · Encryption</p>
-            <h2>Encryption</h2>
+            <h2>Encrypted in transit and at rest</h2>
             <p>Data is encrypted in transit (TLS) between your browser and our services, and at rest on our managed database and storage platform. Credentials and API keys are held server-side only — never exposed to the browser.</p>
           </section>
 
@@ -512,7 +510,6 @@ const PAGES = {
   "/how-it-works": HowPage,
   "/who-its-for": WhoPage,
   "/security": SecurityPage,
-  "/demo": DemoPage,
   "/privacy": PrivacyPage,
   "/sms-terms": SmsTermsPage,
   "/sms-opt-in": SmsOptInPage,

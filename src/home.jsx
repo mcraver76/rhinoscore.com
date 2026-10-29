@@ -1,11 +1,9 @@
-// Home page (Varda's approved copy v1, 2026-10-29) and the /demo request form.
+// Home page (Varda's approved copy v1, 2026-10-29).
 // Product pictures are real RhinoScore screens rendered with made-up demo data only
 // (no real companies, customers, crews or prices).
 
-import { useState } from "react";
-import { SUPPORT_EMAIL } from "./sms.jsx";
 
-const DEMO = "/demo";
+import { DEMO_HREF as DEMO } from "./routes.js";
 
 const problems = [
   "Updates come by text, phone call and paper.",
@@ -55,8 +53,8 @@ function Devices() {
         <div className="phone-screen">
           <img
             src="/shots/hero-checkin.webp"
-            width="390"
-            height="844"
+            width="780"
+            height="1288"
             alt="RhinoScore crew phone screen: a site and service are selected and a large Check in button confirms the visit with a quick selfie."
           />
         </div>
@@ -172,123 +170,6 @@ export function HomePage() {
           </div>
         </div>
       </section>
-    </main>
-  );
-}
-
-/* ---------- /demo: request form ---------- */
-
-const INDUSTRIES = ["Cleaning / janitorial", "Facilities / maintenance", "Property management", "Schools / education", "Healthcare", "Other"];
-const SITE_COUNTS = [["1-5", "1 to 5"], ["6-25", "6 to 25"], ["26-100", "26 to 100"], ["100+", "More than 100"]];
-
-export function DemoPage() {
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
-  const [error, setError] = useState("");
-
-  async function submit(e) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (!form.reportValidity()) return;
-    const data = Object.fromEntries(new FormData(form).entries());
-    setStatus("sending");
-    setError("");
-    try {
-      const r = await fetch("/api/demo-request", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const out = await r.json().catch(() => ({}));
-      if (r.ok && out.ok) {
-        setStatus("sent");
-        form.reset();
-        return;
-      }
-      setError(out.error === "invalid" ? "Please check your name, work email, phone and company, then try again." : "");
-    } catch {
-      setError("");
-    }
-    setStatus("error");
-  }
-
-  return (
-    <main>
-      <section className="policy-hero">
-        <div className="wrap">
-          <p className="updated">Request a demo</p>
-          <h1>See RhinoScore with your own sites.</h1>
-          <p>Tell us a little about your company and we'll set up a short walkthrough tailored to how you run. No pressure, no jargon.</p>
-        </div>
-      </section>
-      <div className="wrap">
-        <div className="demo-wrap">
-          {status === "sent" ? (
-            <div className="policy-section demo-done" role="status">
-              <h2>Thanks, we got it.</h2>
-              <p>We'll reach out soon to find a time that works. Questions before then? Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
-            </div>
-          ) : (
-            <form className="demo-form policy-section" onSubmit={submit} noValidate={false}>
-              <div className="field-row">
-                <label>
-                  <span>Your name *</span>
-                  <input name="name" type="text" autoComplete="name" required maxLength={100} />
-                </label>
-                <label>
-                  <span>Company *</span>
-                  <input name="company" type="text" autoComplete="organization" required maxLength={150} />
-                </label>
-              </div>
-              <div className="field-row">
-                <label>
-                  <span>Work email *</span>
-                  <input name="email" type="email" autoComplete="email" required maxLength={200} />
-                </label>
-                <label>
-                  <span>Phone (optional)</span>
-                  <input name="phone" type="tel" autoComplete="tel" maxLength={40} pattern="[0-9+().\-\s]{7,40}" />
-                </label>
-              </div>
-              <div className="field-row">
-                <label>
-                  <span>Industry</span>
-                  <select name="industry" defaultValue="">
-                    <option value="">Choose one</option>
-                    {INDUSTRIES.map((i) => (<option key={i} value={i}>{i}</option>))}
-                  </select>
-                </label>
-                <label>
-                  <span>Number of sites</span>
-                  <select name="sites" defaultValue="">
-                    <option value="">Choose one</option>
-                    {SITE_COUNTS.map(([v, l]) => (<option key={v} value={v}>{l}</option>))}
-                  </select>
-                </label>
-              </div>
-              <label>
-                <span>Anything we should know? (optional)</span>
-                <textarea name="message" rows={4} maxLength={2000} />
-              </label>
-              {/* Honeypot for bots: hidden from people and screen readers. */}
-              <label className="hp" aria-hidden="true">
-                <span>Website</span>
-                <input name="website" type="text" tabIndex={-1} autoComplete="off" />
-              </label>
-              {status === "error" && (
-                <p className="form-error" role="alert">
-                  {error || "Sorry, that didn't go through."} You can also email us at <a href={`mailto:${SUPPORT_EMAIL}?subject=Demo%20request`}>{SUPPORT_EMAIL}</a>.
-                </p>
-              )}
-              <button className="button primary" type="submit" disabled={status === "sending"}>
-                {status === "sending" ? "Sending…" : "Request my demo"}
-              </button>
-              <p className="smallprint">
-                We use these details only to set up your demo and follow up about RhinoScore. See our <a href="/privacy">Privacy Policy</a>.
-              </p>
-            </form>
-          )}
-        </div>
-      </div>
     </main>
   );
 }
