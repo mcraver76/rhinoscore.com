@@ -96,9 +96,11 @@ function SmsPrivacyEs() {
   );
 }
 
-function SectionList({ rows }) {
+const sectionId = (prefix, title) => prefix && `${prefix}-${title.split(".")[0]}`;
+
+function SectionList({ rows, idPrefix }) {
   return rows.map(([title, body]) => (
-    <section className="policy-section" key={title}>
+    <section className="policy-section" key={title} id={sectionId(idPrefix, title)}>
       <h2>{title}</h2>
       <p>{body}</p>
     </section>
@@ -153,7 +155,7 @@ const TOS_EN = [
   ["1. Agreement", `These Terms of Service ("Terms") govern your access to and use of the ${CO} software, websites, and related services (the "Service"). By creating an account or using the Service, you agree to these Terms. If you are agreeing on behalf of a company, you represent that you are authorized to bind that company.`],
   ["2. Accounts", "You are responsible for the information you provide, for keeping your password secure, and for all activity under your account. Notify us promptly of any unauthorized use. You must be at least 18 years old to use the Service."],
   ["3. Acceptable use", "You agree not to misuse the Service — including attempting to access it in an unauthorized way, disrupting it, uploading unlawful or infringing content, or using it to violate the rights of others. You are responsible for the content and data you and your team upload (including photos, invoices, and customer information) and for having the rights to use it. You agree that check-ins, check-outs, photos and other records you submit are accurate and are your own."],
-  ["4. Your data", "Data you upload remains yours. You grant us the limited rights needed to host, process, and display it in order to operate the Service for you. We handle personal data as described in our Privacy Policy."],
+  ["4. Your data", <>Data you upload remains yours. You grant us the limited rights needed to host, process, and display it in order to operate the Service for you. We handle personal data as described in our <a href="/privacy">Privacy Policy</a>.</>],
   ["5. Fees", "Paid plans are billed in advance on a recurring basis and are non-refundable except where required by law. We may change pricing with reasonable advance notice. Failure to pay may result in suspension of the Service."],
   ["6. Availability", "We work to keep the Service available but do not guarantee it will be uninterrupted or error-free. We may modify, suspend, or discontinue features from time to time."],
   ["7. Termination", "You may stop using the Service at any time. We may suspend or terminate access if you breach these Terms or use the Service in a way that could cause harm or legal exposure. On termination you may request an export of your data for a reasonable period."],
@@ -163,7 +165,7 @@ const TOS_EN = [
   ["11. Exclusive remedies", `The remedies expressly stated in these Terms are your sole and exclusive remedies. If you are dissatisfied with the Service, your sole and exclusive remedy is to stop using it. The disclaimers in the "Disclaimers" section and the caps in the "Limitation of liability" section are an essential part of the agreement between us and will survive even if an exclusive remedy is found to have failed of its essential purpose.`],
   ["12. Changes", "We may update these Terms. If we make material changes, we will notify you and ask you to accept them, and continued use after the changes take effect means you accept the updated Terms."],
   ["13. Language", "These Terms are provided in English and Spanish. The Spanish version is a courtesy translation; if the two differ, the English version controls."],
-  ["14. Contact", `Questions about these Terms: ${CONTACT}.`],
+  ["14. Contact", <>Questions about these Terms: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>.</>],
 ];
 
 const TOS_ES_NOTE = "Traducción de cortesía. Si hay alguna diferencia, prevalece la versión en inglés.";
@@ -172,7 +174,7 @@ const TOS_ES = [
   ["1. Acuerdo", `Estos Términos de servicio ("Términos") rigen tu acceso y uso del software, los sitios web y los servicios relacionados de ${CO} (el "Servicio"). Al crear una cuenta o usar el Servicio, aceptas estos Términos. Si aceptas en nombre de una empresa, declaras que tienes autorización para obligar a esa empresa.`],
   ["2. Cuentas", "Eres responsable de la información que proporcionas, de mantener tu contraseña segura y de toda la actividad en tu cuenta. Avísanos de inmediato si alguien usa tu cuenta sin permiso. Debes tener al menos 18 años para usar el Servicio."],
   ["3. Uso aceptable", "Aceptas no hacer mal uso del Servicio — incluido intentar acceder sin autorización, interrumpirlo, subir contenido ilegal o que infrinja derechos, o usarlo para violar los derechos de otros. Eres responsable del contenido y los datos que tú y tu equipo suben (incluidas fotos, facturas e información de clientes) y de tener derecho a usarlos. Aceptas que los registros de entrada y salida, las fotos y demás información que envías son correctos y son tuyos."],
-  ["4. Tus datos", "Los datos que subes siguen siendo tuyos. Nos das los derechos limitados necesarios para alojarlos, procesarlos y mostrarlos para operar el Servicio. Manejamos los datos personales como se describe en nuestra Política de privacidad."],
+  ["4. Tus datos", <>Los datos que subes siguen siendo tuyos. Nos das los derechos limitados necesarios para alojarlos, procesarlos y mostrarlos para operar el Servicio. Manejamos los datos personales como se describe en nuestra <a href="/privacy#es">Política de privacidad</a>.</>],
   ["5. Tarifas", "Los planes de pago se cobran por adelantado de forma recurrente y no son reembolsables, salvo cuando la ley lo exija. Podemos cambiar los precios con un aviso razonable. La falta de pago puede suspender el Servicio."],
   ["6. Disponibilidad", "Trabajamos para mantener el Servicio disponible, pero no garantizamos que funcione sin interrupciones ni errores. Podemos modificar, suspender o descontinuar funciones de vez en cuando."],
   ["7. Terminación", "Puedes dejar de usar el Servicio en cualquier momento. Podemos suspender o terminar el acceso si incumples estos Términos o usas el Servicio de una forma que pueda causar daño o riesgo legal. Al terminar, puedes pedir una copia de tus datos durante un periodo razonable."],
@@ -182,13 +184,27 @@ const TOS_ES = [
   ["11. Recursos exclusivos", `Los recursos indicados expresamente en estos Términos son tus únicos recursos. Si no estás satisfecho con el Servicio, tu único recurso es dejar de usarlo. Las exenciones y los límites de responsabilidad son parte esencial del acuerdo y siguen vigentes aunque un recurso exclusivo no cumpla su propósito.`],
   ["12. Cambios", "Podemos actualizar estos Términos. Si hacemos cambios importantes, te avisaremos y te pediremos que los aceptes; seguir usando el Servicio después de que entren en vigor significa que aceptas los Términos actualizados."],
   ["13. Idioma", "Estos Términos se ofrecen en inglés y en español. La versión en español es una traducción de cortesía; si hay alguna diferencia, prevalece la versión en inglés."],
-  ["14. Contacto", `Preguntas sobre estos Términos: ${CONTACT}.`],
+  ["14. Contacto", <>Preguntas sobre estos Términos: <a href={`mailto:${CONTACT}`}>{CONTACT}</a>.</>],
 ];
+
+// Jump list of section titles (links only; the legal text itself is unchanged).
+function JumpList({ rows, idPrefix, label }) {
+  return (
+    <nav className="jump-list" aria-label={label}>
+      <p className="jump-title">{label}</p>
+      <ol>
+        {rows.map(([title]) => (
+          <li key={title}><a href={`#${sectionId(idPrefix, title)}`}>{title.replace(/^\d+\.\s*/, "")}</a></li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
 
 export function TermsPage() {
   return (
     <main>
-      <section className="policy-hero">
+      <section className="policy-hero" id="top">
         <div className="wrap" data-legal-version={LEGAL_VERSION}>
           <p className="updated">Effective: {LEGAL_EFFECTIVE}</p>
           <h1>Terms of Service</h1>
@@ -198,7 +214,8 @@ export function TermsPage() {
       </section>
       <div className="wrap">
         <div className="policy-stack">
-          <SectionList rows={TOS_EN} />
+          <JumpList rows={TOS_EN} idPrefix="s" label="Sections" />
+          <SectionList rows={TOS_EN} idPrefix="s" />
         </div>
       </div>
 
@@ -210,7 +227,9 @@ export function TermsPage() {
       />
       <div className="wrap" lang="es">
         <div className="policy-stack">
-          <SectionList rows={TOS_ES} />
+          <p className="lang-switch lang-back" lang="en"><a href="#top">Read in English <span aria-hidden="true">↑</span></a></p>
+          <JumpList rows={TOS_ES} idPrefix="es" label="Secciones" />
+          <SectionList rows={TOS_ES} idPrefix="es" />
         </div>
       </div>
     </main>
