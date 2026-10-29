@@ -52,7 +52,7 @@ test("404 page, sitemap and robots", async () => {
   assert.match(robots, /Sitemap: https:\/\/rhinoscore\.com\/sitemap\.xml/);
 });
 
-test("no background video, every image has alt text, demo link goes to support@", async () => {
+test("no background video, every image has alt text, demo link set in one place", async () => {
   const files = await readdir(new URL("../dist/", import.meta.url));
   assert.ok(!files.includes("hero.mp4"));
   for (const f of ["../src/App.jsx", "../src/home.jsx", "../src/sms.jsx"]) {
@@ -60,8 +60,18 @@ test("no background video, every image has alt text, demo link goes to support@"
     for (const tag of src.match(/<img\b[^>]*>/g) || []) assert.match(tag, /\balt=/, `${f}: ${tag}`);
   }
   const routes = await read("../src/routes.js");
-  assert.match(routes, /DEMO_HREF = "mailto:support@rhinoscore\.com/);
+  assert.match(routes, /DEMO_HREF = "\/demo"/);
   for (const f of ["../src/App.jsx", "../src/home.jsx", "../src/sms.jsx", "../src/routes.js"]) {
     assert.doesNotMatch(await read(f), /(legal|info)@rhinoscore\.com/, f);
   }
+});
+
+test("demo form: industries match the server, Turnstile is wired, hosts are narrow", async () => {
+  const [demo, api, vercel] = await Promise.all([read("../src/demo.jsx"), read("../api/demo-request.js"), read("../vercel.json")]);
+  const list = (src) => JSON.parse(src.match(/const INDUSTRIES = (\[[^\]]*\])/)[1]);
+  assert.deepEqual(list(demo), ["Building services / facility services", "Schools & education", "Property management", "Healthcare", "Other service company"]);
+  assert.deepEqual(list(api), list(demo));
+  assert.match(api, /challenges\.cloudflare\.com\/turnstile\/v0\/siteverify/);
+  assert.doesNotMatch(api, /\[a-z0-9-\]\+\\\.vercel\\\.app/);
+  assert.match(vercel, /frame-src https:\/\/challenges\.cloudflare\.com/);
 });

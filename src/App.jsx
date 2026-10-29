@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
 import { HomePage } from "./home.jsx";
+import { DemoPage } from "./demo.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
 const pillars = [
@@ -510,6 +511,7 @@ const PAGES = {
   "/how-it-works": HowPage,
   "/who-its-for": WhoPage,
   "/security": SecurityPage,
+  "/demo": DemoPage,
   "/privacy": PrivacyPage,
   "/sms-terms": SmsTermsPage,
   "/sms-opt-in": SmsOptInPage,
