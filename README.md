@@ -29,6 +29,10 @@ npm run build
 npm test
 ```
 
-Demo form: set in Vercel `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY` and `VITE_TURNSTILE_SITE_KEY`
-(Production). Previews use Cloudflare's test keys. Missing keys: the form shows the support email.
-See the top of `api/demo-request.js` for the per-IP rate-limit rule to add in Vercel Firewall.
+Demo form (`api/demo-request.js`):
+- Vercel **Production** env only: `RESEND_API_KEY` (a NEW send-only Resend key restricted to the rhinoscore.com
+  domain, not the app's key), `TURNSTILE_SECRET_KEY`, `VITE_TURNSTILE_SITE_KEY`. Michael creates these.
+- Previews and local never send email: they check everything with Cloudflare's test keys and answer `dryRun`.
+- Missing Production keys: the form shows the support email instead.
+- **Required before merge:** Vercel Firewall rule: POST `/api/demo-request`, 3 per hour per IP, deny (429).
+  Test: 4 POSTs with an invalid body (`{}`) to production; the 4th must return 429.

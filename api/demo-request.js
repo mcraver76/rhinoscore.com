@@ -4,18 +4,23 @@
 //
 // Bot check: Cloudflare Turnstile, verified here on the server before anything is sent.
 //
-// Vercel project settings → Environment Variables:
-//   RESEND_API_KEY            required (Production + Preview). Missing → 503 and the form shows the support email.
-//   TURNSTILE_SECRET_KEY      required in Production. Missing in Production → 503.
-//                             Previews/local fall back to Cloudflare's documented always-pass TEST secret.
-//   VITE_TURNSTILE_SITE_KEY   the matching public site key (build-time; Production). Previews use the TEST site key.
+// Previews and local runs NEVER send email: outside Production the request is fully checked
+// (origin, size, fields, Turnstile with Cloudflare's always-pass TEST secret if no real secret is set)
+// and then answered {ok:true, dryRun:true} without contacting Resend.
+//
+// Vercel project settings → Environment Variables (PRODUCTION only):
+//   RESEND_API_KEY            a NEW send-only Resend key restricted to the rhinoscore.com domain
+//                             (not the app's key). Michael creates it together with the Turnstile keys.
+//   TURNSTILE_SECRET_KEY      Turnstile secret. Missing in Production → 503 and the form shows the support email.
+//   VITE_TURNSTILE_SITE_KEY   matching public site key (build-time). Previews use Cloudflare's TEST site key.
 //   DEMO_TO                   optional, default support@rhinoscore.com
 //   DEMO_FROM                 optional, default "RhinoScore Website <reports@rhinoscore.com>" (a Resend-verified sender)
 //
-// TODO(Michael, Vercel dashboard): per-IP backstop limit. Firewall → Rules → New rule:
+// REQUIRED BEFORE MERGE (Michael, Vercel dashboard → Firewall → Rules → New rule):
 //   If Request Path equals /api/demo-request AND Method equals POST → Rate Limit, fixed window 1 hour,
-//   3 requests, key = IP, action = Deny (429). (Free WAF rule; no code or extra accounts needed.)
-//   @vercel/firewall checkRateLimit was not used: it needs a dashboard rule anyway plus a new dependency.
+//   3 requests per IP, action Deny (429). Test after deploy: send 4 POSTs with an INVALID body (e.g. {})
+//   to https://rhinoscore.com/api/demo-request; the 4th must return 429. Nothing is sent by invalid posts.
+//   (@vercel/firewall checkRateLimit was not used: it needs the same dashboard rule plus a new dependency.)
 
 const LIMITS = { name: 100, email: 200, phone: 40, company: 150, industry: 60, sites: 20, message: 2000 };
 // Keep in the same order as the form (src/home.jsx).
@@ -93,14 +98,18 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false, error: "invalid" });
   }
 
+  const prod = isProd();
   const key = process.env.RESEND_API_KEY;
-  const secret = process.env.TURNSTILE_SECRET_KEY || (isProd() ? "" : TURNSTILE_TEST_SECRET);
-  if (!key || !secret) return res.status(503).json({ ok: false, error: "not_configured" });
+  const secret = process.env.TURNSTILE_SECRET_KEY || (prod ? "" : TURNSTILE_TEST_SECRET);
+  if (!secret || (prod && !key)) return res.status(503).json({ ok: false, error: "not_configured" });
 
-  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  const ip = String(req.headers["x-real-ip"] || "").trim() || String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
   if (!(await verifyTurnstile(b["cf-turnstile-response"], ip, secret))) {
     return res.status(400).json({ ok: false, error: "bot_check" });
   }
+
+  // Previews/local: everything above was checked; never send.
+  if (!prod) return res.status(200).json({ ok: true, dryRun: true });
 
   const rows = [
     ["Name", f.name], ["Work email", f.email], ["Phone", f.phone || "—"], ["Company", f.company],
@@ -120,7 +129,7 @@ export default async function handler(req, res) {
         from: process.env.DEMO_FROM || "RhinoScore Website <reports@rhinoscore.com>",
         to: [process.env.DEMO_TO || "support@rhinoscore.com"],
         reply_to: f.email,
-        subject: `Demo request: ${f.company.slice(0, 80)}`,
+        subject: `Demo request: ${f.company.replace(/[\r\n]+/g, " ").slice(0, 80)}`,
         html,
         text,
       }),

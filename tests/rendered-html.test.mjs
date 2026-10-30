@@ -76,3 +76,40 @@ test("demo form: industries match the server, Turnstile is wired, hosts are narr
   assert.doesNotMatch(api, /\[a-z0-9-\]\+\\\.vercel\\\.app/);
   assert.match(vercel, /frame-src https:\/\/challenges\.cloudflare\.com/);
 });
+
+test("demo API: previews dry-run and never call Resend; production sends", async () => {
+  const { default: handler } = await import("../api/demo-request.js");
+  const call = async (body, headers = {}) => {
+    let code, out;
+    const res = { setHeader() {}, status(c) { code = c; return this; }, json(o) { out = o; return this; } };
+    await handler({ method: "POST", headers: { "content-type": "application/json", origin: "https://rhinoscore.com", "x-real-ip": "1.2.3.4", ...headers }, body }, res);
+    return [code, out];
+  };
+  const good = { name: "T P", email: "t@example.com", company: "Ex\r\nBcc: x@y.com", industry: "Healthcare", "cf-turnstile-response": "tok" };
+  const calls = [];
+  const realFetch = globalThis.fetch;
+  const env = { ...process.env };
+  globalThis.fetch = async (url, opts) => {
+    calls.push({ url: String(url), body: String(opts.body) });
+    return url.includes("turnstile") ? { json: async () => ({ success: true, hostname: "rhinoscore.com", action: "demo" }) } : { ok: true };
+  };
+  try {
+    delete process.env.VERCEL_ENV; delete process.env.TURNSTILE_SECRET_KEY; process.env.RESEND_API_KEY = "k";
+    assert.deepEqual(await call(good), [200, { ok: true, dryRun: true }]);
+    assert.ok(calls.every((c) => !c.url.includes("resend")), "preview must not call Resend");
+    assert.ok(calls.some((c) => c.body.includes("remoteip=1.2.3.4")));
+    assert.deepEqual((await call({ ...good, email: "a@b" }))[0], 400);
+
+    process.env.VERCEL_ENV = "production"; delete process.env.RESEND_API_KEY; process.env.TURNSTILE_SECRET_KEY = "s";
+    assert.deepEqual(await call(good), [503, { ok: false, error: "not_configured" }]);
+    process.env.RESEND_API_KEY = "k";
+    calls.length = 0;
+    assert.deepEqual(await call(good), [200, { ok: true }]);
+    const sent = JSON.parse(calls.find((c) => c.url.includes("resend")).body);
+    assert.doesNotMatch(sent.subject, /[\r\n]/);
+    assert.deepEqual((await call(good, { origin: "https://evil.vercel.app" }))[0], 403);
+  } finally {
+    globalThis.fetch = realFetch;
+    for (const k of ["VERCEL_ENV", "TURNSTILE_SECRET_KEY", "RESEND_API_KEY"]) { if (k in env) process.env[k] = env[k]; else delete process.env[k]; }
+  }
+});
