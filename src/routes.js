@@ -65,6 +65,28 @@ export const ROUTES = [
   },
 ];
 
+// HIDDEN pages (Michael 10-31 5:25): direct link only. Prerendered with noindex, never in the sitemap or the nav.
+export const HIDDEN_ROUTES = [
+  {
+    path: "/industries/building-services",
+    title: "RhinoScore for Building Service Contractors · Operational Intelligence Platform",
+    description: "Run every site, crew and inspection from one screen. Proof of work, scored inspections, time clock and customer portal for building service contractors.",
+    noindex: true,
+  },
+  {
+    path: "/industries/schools",
+    title: "RhinoScore for K-12 Schools · Custodial & Facilities Operations",
+    description: "One screen for your district's custodial team: scored building inspections, cleaning schedules, maintenance requests, supplies and training. Designed to hold no student data.",
+    noindex: true,
+  },
+  {
+    path: "/industries/property-management",
+    title: "RhinoScore for Property Management · Office & Retail Properties",
+    description: "Scored property inspections, owner-ready reports and an owner portal, across your whole portfolio. Built for office and retail property managers.",
+    noindex: true,
+  },
+];
+
 export const NOT_FOUND = {
   title: "Page not found | RhinoScore",
   description: "This page doesn't exist. Head back to the RhinoScore home page.",
@@ -72,5 +94,5 @@ export const NOT_FOUND = {
 
 export function routeFor(path) {
   const clean = path.replace(/\/+$/, "") || "/";
-  return ROUTES.find((r) => r.path === clean) || null;
+  return ROUTES.find((r) => r.path === clean) || HIDDEN_ROUTES.find((r) => r.path === clean) || null;
 }

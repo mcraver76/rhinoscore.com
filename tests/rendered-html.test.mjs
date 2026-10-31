@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
-import { ROUTES } from "../src/routes.js";
+import { HIDDEN_ROUTES, ROUTES } from "../src/routes.js";
 
 const read = (p) => readFile(new URL(p, import.meta.url), "utf8");
 
@@ -66,4 +66,18 @@ test("no background video, every image has alt text, demo link goes to support@"
   for (const f of ["../src/App.jsx", "../src/home.jsx", "../src/sms.jsx", "../src/routes.js"]) {
     assert.doesNotMatch(await read(f), /(legal|info)@rhinoscore\.com/, f);
   }
+});
+
+test("hidden industry pages: direct link works, noindex, not in sitemap / nav / home", async () => {
+  const [sitemap, app, home, vercel] = await Promise.all([read("../dist/sitemap.xml"), read("../src/App.jsx"), read("../src/home.jsx"), read("../vercel.json")]);
+  assert.equal(HIDDEN_ROUTES.length, 3);
+  for (const r of HIDDEN_ROUTES) {
+    const html = await read(`../dist/${r.path.slice(1)}.html`);
+    assert.ok(html.includes(`<title>${r.title.replace(/&/g, "&amp;")}</title>`), `title on ${r.path}`);
+    assert.match(html, /<meta name="robots" content="noindex" \/>/, `noindex on ${r.path}`);
+    assert.ok(!sitemap.includes(r.path), `${r.path} must not be in the sitemap`);
+    assert.ok(!home.includes(r.path), `${r.path} must not be linked from the home page`);
+    assert.equal(app.split(`href="${r.path}"`).length, 1, `${r.path} must not be linked in the nav/footer`);
+  }
+  assert.match(vercel, /"source": "\/industries\/\(\.\*\)"[\s\S]*?X-Robots-Tag/);
 });
