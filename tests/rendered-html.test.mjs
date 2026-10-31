@@ -29,6 +29,7 @@ test("builds a React and Vite app", async () => {
   assert.match(app, /Privacy Policy/);
   assert.match(app, /Terms of Service/);
   assert.match(app, /Sign in/);
+  assert.match(app, /href="\/support"/);
   assert.match(styles, /\.home-hero/);
 });
 

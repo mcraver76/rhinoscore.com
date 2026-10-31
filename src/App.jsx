@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
+import { SupportPage } from "./support.jsx";
 import { HomePage } from "./home.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
@@ -147,6 +148,7 @@ function Footer() {
           </div>
           <div className="footer-col">
             <h4>Contact</h4>
+            <a href="/support">Support</a>
             <span className="footer-text">{OWNER}</span>
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
           </div>
@@ -515,6 +517,7 @@ const PAGES = {
   "/sms-opt-in": SmsOptInPage,
   "/terms": TermsPage,
   "/account": AccountPage,
+  "/support": SupportPage,
 };
 
 export default function App() {
