@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
 import { SupportPage } from "./support.jsx";
+import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
@@ -512,6 +513,9 @@ const PAGES = {
   "/terms": TermsPage,
   "/account": AccountPage,
   "/support": SupportPage,
+  "/industries/building-services": BuildingServicesPage,
+  "/industries/schools": SchoolsPage,
+  "/industries/property-management": PropertyManagementPage,
 };
 
 export default function App() {

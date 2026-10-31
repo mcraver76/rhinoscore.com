@@ -297,6 +297,8 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .pillar .pnum { font-family: var(--display); font-weight: 800; font-size: 0.9rem; color: var(--cyan); letter-spacing: 0.05em; }
 .pillar h3 { margin: 16px 0 12px; }
 .pillar p { color: var(--ink-soft); line-height: 1.6; font-size: 0.98rem; }
+.coming-list { margin: 22px 0 0; padding-left: 20px; color: var(--ink-soft); line-height: 1.7; font-size: 1.05rem; }
+.coming-list li + li { margin-top: 6px; }
 
 /* ---------- Steps ---------- */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
