@@ -360,13 +360,7 @@ function AccountPage() {
             <div className="legal-steps">
               <div className="legal-step">
                 <div>
-                  <h3>From your account settings</h3>
-                  <p>Signed-in RhinoScore users can request account deletion from their account settings. This removes your access and schedules your personal data for deletion.</p>
-                </div>
-              </div>
-              <div className="legal-step">
-                <div>
-                  <h3>Or request it by email</h3>
+                  <h3>Request it by email</h3>
                   <p>Email <a href={`mailto:${SUPPORT_EMAIL}?subject=Delete%20my%20account`}>{SUPPORT_EMAIL}</a> from the address on your account with “Delete my account.” We'll confirm and process your request, typically within 30 days.</p>
                 </div>
               </div>
