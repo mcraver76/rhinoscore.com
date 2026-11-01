@@ -361,16 +361,25 @@ function AccountPage() {
             <div className="legal-steps">
               <div className="legal-step">
                 <div>
-                  <h3>Request it by email</h3>
-                  <p>Email <a href={`mailto:${SUPPORT_EMAIL}?subject=Delete%20my%20account`}>{SUPPORT_EMAIL}</a> from the address on your account with “Delete my account.” We'll confirm and process your request, typically within 30 days.</p>
+                  <h3>In the app</h3>
+                  <p>Open RhinoScore on your phone, or go to <a href="https://app.rhinoscore.com">app.rhinoscore.com</a> and sign in. Then go to <b>Profile → Delete my account</b> and follow the steps.</p>
+                </div>
+              </div>
+              <div className="legal-step">
+                <div>
+                  <h3>Or ask us by email</h3>
+                  <p>Email <a href={`mailto:${SUPPORT_EMAIL}?subject=Delete%20my%20account`}>{SUPPORT_EMAIL}</a> from the address on your account with “Delete my account.” We'll send a confirmation link to that address; nothing is deleted until you open it.</p>
                 </div>
               </div>
             </div>
-            <p className="note" style={{ marginTop: 16, color: "var(--ink-mute)", fontWeight: 400 }}>
-              Some records may be retained where required for legal, security, or
-              legitimate business reasons — for example, records tied to billing or
-              fraud prevention. We'll tell you if anything must be kept, and why.
+            <p style={{ marginTop: 16 }}>
+              <b>What happens:</b> your login is turned off right away. Your personal data (profile, contact details, photos, documents you uploaded and device records) is deleted within 30 days. Photos you sent in chat are deleted; team messages you wrote stay, shown as 'Deleted user'. Time, pay and tax records that your employer is legally required to keep (check-in times, hours, invoices, W-9 forms) and safety-training records are kept only for the period the law requires. Backup copies are removed within 7 days after your data is deleted.
             </p>
+            <div lang="es" style={{ marginTop: 18, paddingTop: 14, borderTop: "1px solid var(--line)" }}>
+              <h3>Eliminar tu cuenta y tus datos</h3>
+              <p><b>En la app:</b> abre RhinoScore en tu teléfono, o entra a <a href="https://app.rhinoscore.com">app.rhinoscore.com</a>, y ve a <b>Perfil → Eliminar mi cuenta</b>. <b>Por correo:</b> escribe a <a href={`mailto:${SUPPORT_EMAIL}?subject=Eliminar%20mi%20cuenta`}>{SUPPORT_EMAIL}</a> desde el correo de tu cuenta con “Eliminar mi cuenta”; te enviaremos un enlace de confirmación y no se borra nada hasta que lo abras.</p>
+              <p><b>Qué pasa:</b> tu acceso se desactiva de inmediato. Tus datos personales (perfil, datos de contacto, fotos, documentos que subiste y registros de dispositivos) se borran en un plazo de 30 días. Las fotos que enviaste en el chat se borran; los mensajes de equipo que escribiste se conservan y aparecen como 'Deleted user'. Los registros de horas, pagos e impuestos que tu empleador debe guardar por ley (horas de entrada, horas trabajadas, facturas, formularios W-9) y los registros de capacitación de seguridad se conservan solo el tiempo que exige la ley. Las copias de respaldo se eliminan dentro de los 7 días siguientes a que se borran tus datos.</p>
+            </div>
           </section>
 
           <section className="policy-section">
