@@ -344,6 +344,7 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .footer-col a:last-child { margin-bottom: 0; }
 .footer-col a:hover { color: var(--ink); }
 .footer-bottom { border-top: 1px solid var(--line); padding-block: 32px; color: var(--ink-mute); font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+.footer-bottom .legal-line { overflow-wrap: anywhere; }
 @media (max-width: 720px) {
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px 32px; padding-block: 56px 40px; }
   .footer-brand { grid-column: 1 / -1; }

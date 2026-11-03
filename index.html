@@ -30,7 +30,9 @@
     <link rel="apple-touch-icon" href="/brand/appicon.png" />
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Static legal line, present in the raw HTML of every page (for reviewers and crawlers that don't run JS).
+         React replaces it on load with the full footer, which shows the same line (LEGAL_LINE in src/sms.jsx). -->
+    <div id="root"><footer class="site-footer"><div class="wrap footer-bottom"><span class="legal-line">© 2026 Six10 Digital LLC · RhinoScore is a product of Six10 Digital LLC · 1870 The Exchange SE Ste 220, Atlanta, GA 30339</span></div></footer></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

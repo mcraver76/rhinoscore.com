@@ -51,12 +51,12 @@ export const ROUTES = [
   {
     path: "/terms",
     title: "Terms of Service | RhinoScore",
-    description: "The RhinoScore Terms of Service, the same terms you accept in the app. English and Spanish.",
+    description: "The RhinoScore Terms of Service between you and Six10 Digital LLC, the company that operates RhinoScore. The same terms you accept in the app. English and Spanish.",
   },
   {
     path: "/sms-terms",
     title: "SMS Terms | RhinoScore Alerts",
-    description: "Terms for RhinoScore Alerts text messages: what we send, how often, and how to get help or opt out. English and Spanish.",
+    description: "Terms for RhinoScore Alerts text messages from Six10 Digital LLC: what we send, how often, and how to get help or opt out. English and Spanish.",
   },
   {
     path: "/sms-opt-in",

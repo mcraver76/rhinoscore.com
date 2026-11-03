@@ -3,7 +3,7 @@
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
 import { useEffect, useState } from "react";
-import { OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
+import { LEGAL_LINE, OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
 import { SupportPage } from "./support.jsx";
 import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
@@ -156,8 +156,7 @@ function Footer() {
         </nav>
       </div>
       <div className="wrap footer-bottom">
-        <span>© 2026 {OWNER}. All rights reserved.</span>
-        <span>RhinoScore is a product of {OWNER}.</span>
+        <span className="legal-line">{LEGAL_LINE}</span>
       </div>
     </footer>
   );
