@@ -7,6 +7,9 @@
 // Spanish needs a fluent reviewer. Keep the opt-in text here identical to the in-app checkbox text.
 
 export const OWNER = "Six10 Digital LLC";
+// Registered business address (matches IRS 147C + GA certificate). Shown in the footer and on the legal pages.
+export const OWNER_ADDRESS = "1870 The Exchange SE Ste 220, Atlanta, GA 30339";
+export const LEGAL_LINE = `© 2026 ${OWNER} · RhinoScore is a product of ${OWNER} · ${OWNER_ADDRESS}`;
 export const SUPPORT_EMAIL = "support@rhinoscore.com";
 const PROGRAM = "RhinoScore Alerts";
 const UPDATED_EN = "Last updated: October 29, 2026";
@@ -211,7 +214,7 @@ export function TermsPage() {
         <div className="wrap" data-legal-version={LEGAL_VERSION}>
           <p className="updated">Effective: {LEGAL_EFFECTIVE}</p>
           <h1>Terms of Service</h1>
-          <p>These are the same Terms of Service you accept in the RhinoScore app. RhinoScore is a product of {OWNER}. Text messages are also covered by our <a className="inline-link" href="/sms-terms">SMS Terms</a>.</p>
+          <p>These terms are between you and {OWNER} (“Six10 Digital”, “we”), the company that operates RhinoScore, {OWNER_ADDRESS}. These are the same Terms of Service you accept in the RhinoScore app. Text messages are also covered by our <a className="inline-link" href="/sms-terms">SMS Terms</a>.</p>
           <LangSwitch to="#es" label="Leer en español" />
         </div>
       </section>
@@ -226,7 +229,7 @@ export function TermsPage() {
         id="es"
         lang="es"
         title="Términos de servicio"
-        sub={`Vigentes desde: ${LEGAL_EFFECTIVE_ES}. RhinoScore es un producto de ${OWNER}. ${TOS_ES_NOTE}`}
+        sub={`Vigentes desde: ${LEGAL_EFFECTIVE_ES}. Estos términos son entre tú y ${OWNER} (“Six10 Digital”, “nosotros”), la empresa que opera RhinoScore, ${OWNER_ADDRESS}. ${TOS_ES_NOTE}`}
       />
       <div className="wrap" lang="es">
         <div className="policy-stack">
@@ -245,7 +248,7 @@ const TERMS = {
   en: {
     eyebrow: "SMS Terms",
     title: `${PROGRAM} — SMS Terms`,
-    intro: `These terms cover text messages from ${PROGRAM}, sent by ${OWNER}, the maker of RhinoScore. RhinoScore is a work-operations app used by companies (for example, cleaning and facilities companies) to coordinate their crews and subcontractors.`,
+    intro: `These terms cover text messages from ${PROGRAM}, sent by ${OWNER} (“Six10 Digital”, “we”), the company that operates RhinoScore, ${OWNER_ADDRESS}. RhinoScore is a work-operations app used by companies (for example, cleaning and facilities companies) to coordinate their crews and subcontractors.`,
     sections: [
       ["Program", <>
         <p><strong>Program name: {PROGRAM}.</strong> All texts in this program come from one sender, {PROGRAM} ({OWNER}), and are about your RhinoScore account. Each message starts with “{PROGRAM}:”. These are operational messages only. We never send marketing or promotional texts in this program.</p>
@@ -279,14 +282,14 @@ const TERMS = {
         <p>Mobile information and text-messaging opt-in data are never shared with or sold to third parties or affiliates for marketing or promotional purposes. Read the <a href="/privacy#sms">Privacy Policy</a> and the <a href="/terms">Terms of Service</a>.</p>
       </>],
       ["Contact", <>
-        <p>{OWNER} (RhinoScore) · <Mail subject="SMS question" /></p>
+        <p>{OWNER} (RhinoScore) · {OWNER_ADDRESS} · <Mail subject="SMS question" /></p>
       </>],
     ],
   },
   es: {
     eyebrow: "Términos de SMS",
     title: `${PROGRAM} — Términos de SMS`,
-    intro: `Estos términos cubren los mensajes de texto de ${PROGRAM}, enviados por ${OWNER}, el creador de RhinoScore. RhinoScore es una app de operaciones de trabajo que usan las empresas (por ejemplo, empresas de limpieza y mantenimiento) para coordinar a sus equipos y subcontratistas.`,
+    intro: `Estos términos cubren los mensajes de texto de ${PROGRAM}, enviados por ${OWNER} (“Six10 Digital”, “nosotros”), la empresa que opera RhinoScore, ${OWNER_ADDRESS}. RhinoScore es una app de operaciones de trabajo que usan las empresas (por ejemplo, empresas de limpieza y mantenimiento) para coordinar a sus equipos y subcontratistas.`,
     sections: [
       ["Programa", <>
         <p><strong>Nombre del programa: {PROGRAM}.</strong> Todos los mensajes de este programa vienen de un solo remitente, {PROGRAM} ({OWNER}), y tratan sobre tu cuenta de RhinoScore. Cada mensaje comienza con “{PROGRAM}:”. Son solo mensajes operativos. Nunca enviamos mensajes de mercadeo ni promociones en este programa.</p>
@@ -320,7 +323,7 @@ const TERMS = {
         <p>La información móvil y los datos de inscripción a mensajes de texto nunca se comparten ni se venden a terceros ni afiliados con fines de mercadeo o promoción. Lee la <a href="/privacy#es">Política de privacidad</a> y los <a href="/terms">Términos de servicio</a>.</p>
       </>],
       ["Contacto", <>
-        <p>{OWNER} (RhinoScore) · <Mail subject="Pregunta sobre SMS" /></p>
+        <p>{OWNER} (RhinoScore) · {OWNER_ADDRESS} · <Mail subject="Pregunta sobre SMS" /></p>
       </>],
     ],
   },

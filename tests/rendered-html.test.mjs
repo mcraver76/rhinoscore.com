@@ -81,3 +81,15 @@ test("hidden industry pages: direct link works, noindex, not in sitemap / nav / 
   }
   assert.match(vercel, /"source": "\/industries\/\(\.\*\)"[\s\S]*?X-Robots-Tag/);
 });
+
+test("legal entity line (Six10 Digital LLC + address) is in the raw HTML of every page", async () => {
+  const line = "© 2026 Six10 Digital LLC · RhinoScore is a product of Six10 Digital LLC · 1870 The Exchange SE Ste 220, Atlanta, GA 30339";
+  const sms = await read("../src/sms.jsx");
+  assert.ok(sms.includes('OWNER_ADDRESS = "1870 The Exchange SE Ste 220, Atlanta, GA 30339"'));
+  for (const r of [...ROUTES, ...HIDDEN_ROUTES]) {
+    const file = r.path === "/" ? "index.html" : `${r.path.slice(1)}.html`;
+    const html = await read(`../dist/${file}`);
+    assert.ok(html.includes(line), `legal line on ${r.path}`);
+  }
+  assert.ok((await read("../dist/404.html")).includes(line));
+});
