@@ -3,7 +3,7 @@
 // Industry-agnostic. Owned by Six10 Digital LLC (header + footer).
 
 import { useEffect, useState } from "react";
-import { LEGAL_LINE, OWNER, SUPPORT_EMAIL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
+import { LEGAL_LINE, OWNER, SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_TEL, PrivacyPage, SmsOptInPage, SmsTermsPage, TermsPage } from "./sms.jsx";
 import { SupportPage } from "./support.jsx";
 import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
@@ -152,6 +152,7 @@ function Footer() {
             <a href="/support">Support</a>
             <span className="footer-text">{OWNER}</span>
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+            <a href={SUPPORT_TEL}>{SUPPORT_PHONE}</a>
           </div>
         </nav>
       </div>

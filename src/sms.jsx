@@ -11,6 +11,9 @@ export const OWNER = "Six10 Digital LLC";
 export const OWNER_ADDRESS = "1870 The Exchange SE Ste 220, Atlanta, GA 30339";
 export const LEGAL_LINE = `© 2026 ${OWNER} · RhinoScore is a product of ${OWNER} · ${OWNER_ADDRESS}`;
 export const SUPPORT_EMAIL = "support@rhinoscore.com";
+// Main business phone (Google Voice, calls + texts; Michael 2026-11-04). Never the Telnyx alerts number.
+export const SUPPORT_PHONE = "(470) 893-0050";
+export const SUPPORT_TEL = "tel:+14708930050";
 const PROGRAM = "RhinoScore Alerts";
 const UPDATED_EN = "Last updated: October 29, 2026";
 const UPDATED_ES = "Última actualización: 29 de octubre de 2026";
