@@ -1,14 +1,15 @@
 // RhinoScore — /support (English + Spanish on one page, like /terms).
 // The App Store and Google Play "Support URL" for the phone apps (Varda's copy, 2026-10-31).
-import { SUPPORT_EMAIL } from "./sms.jsx";
+import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_TEL } from "./sms.jsx";
 import { DEMO_HREF } from "./routes.js";
 
 const Mail = () => <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>;
+const Phone = () => <a href={SUPPORT_TEL}>{SUPPORT_PHONE}</a>;
 
 const SUPPORT = {
   en: {
     title: "How can we help?",
-    intro: <>Email <b><Mail /></b> and a real person will reply, usually within one business day.</>,
+    intro: <>Email <b><Mail /></b> or call or text <b><Phone /></b>, and a real person will reply, usually within one business day.</>,
     heading: "Common questions",
     faq: [
       ["I can't sign in.", "Your company administrator sets up your account. Ask them to resend your invite or reset your access. Still stuck? Email us."],
@@ -21,7 +22,7 @@ const SUPPORT = {
   },
   es: {
     title: "¿Cómo podemos ayudarle?",
-    intro: <>Escriba a <b><Mail /></b> y una persona real le responderá, normalmente en un día hábil.</>,
+    intro: <>Escriba a <b><Mail /></b> o llame o envíe un mensaje de texto al <b><Phone /></b>, y una persona real le responderá, normalmente en un día hábil.</>,
     heading: "Preguntas frecuentes",
     faq: [
       ["No puedo iniciar sesión.", "El administrador de su empresa crea su cuenta. Pídale que le reenvíe la invitación o restablezca su acceso. ¿Sigue sin poder entrar? Escríbanos."],
