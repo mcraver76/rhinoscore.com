@@ -1,0 +1,5 @@
+<!-- TEMPORARY PLACEHOLDER (es). Replace with Apple's official "Download on the App Store" badge artwork before merge. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40">
+  <rect x="0.5" y="0.5" width="119" height="39" rx="7" fill="#9aa3ad" stroke="#6b737c"/>
+  <text x="60" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="8.5" fill="#1b1f24">App Store badge (placeholder)</text>
+</svg>
