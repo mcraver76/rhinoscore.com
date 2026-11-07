@@ -512,3 +512,34 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .jump-list a:hover { color: var(--cyan); }
 .lang-back { margin: 0; }
 @media (max-width: 560px) { .jump-list ol { columns: 1; } }
+
+/* ---------- App Store badge + QR (Apple: >= 40px tall, clear space >= 1/4 height, never bigger than the buttons) ---------- */
+.app-badge { display: inline-block; flex: none; padding: 10px; margin: -10px; line-height: 0; }
+.app-badge img { height: 40px; width: auto; }
+.hero-app { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
+.hero-app p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
+.hero-app p span { display: block; color: var(--ink-mute); font-size: 0.88rem; }
+
+.home .crew-app { padding-top: clamp(44px, 6vw, 86px); }
+.crew-app-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(28px, 5vw, 64px); align-items: center; margin-top: 16px; }
+.crew-app-body { margin: 20px 0 26px; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.62; max-width: 58ch; }
+.crew-app-get { display: grid; gap: 18px; justify-items: start; }
+.crew-app-row { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 32px; }
+.crew-app-android { margin: 0; color: var(--ink-mute); font-size: 0.9rem; line-height: 1.5; max-width: 40ch; }
+.crew-app-es { margin-top: clamp(40px, 5vw, 60px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--line); }
+
+.app-qr { margin: 0; display: grid; gap: 10px; justify-items: start; max-width: 200px; }
+.app-qr img { width: 132px; height: 132px; background: #fff; border-radius: 8px; }
+.app-qr figcaption { color: var(--ink-mute); font-size: 0.82rem; line-height: 1.45; }
+.app-qr.small img { width: 120px; height: 120px; }
+
+.faq-app { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 14px; }
+.policy-section .faq-app a { border-bottom: 0; }
+
+.footer-support { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 15px; }
+.footer-col .footer-support a { margin-bottom: 0; }
+.footer-bottom .trademark { flex-basis: 100%; font-size: 0.76rem; }
+
+@media (max-width: 900px) { .crew-app-grid { grid-template-columns: 1fr; } }
+/* phone users tap the badge; the QR code is only for people on a computer */
+@media (max-width: 767px) { .app-qr { display: none; } }

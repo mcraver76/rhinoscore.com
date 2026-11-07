@@ -4,6 +4,7 @@
 
 
 import { DEMO_HREF as DEMO } from "./routes.js";
+import { AppStoreBadge, AppStoreQr } from "./appstore.jsx";
 
 const problems = [
   "Updates come by text, phone call and paper.",
@@ -27,12 +28,67 @@ const selling = [
   "See which customers are at risk of leaving, before they do.",
 ];
 
+// The iPhone app section (App Store build spec, Varda 2026-11-07). EN first, then ES on the same page.
+const crewApp = {
+  en: {
+    heading: "The RhinoScore app. Free for your whole crew.",
+    body: "Your team clocks in, works their checklists and logs their work from their own iPhone. No signal in the basement? The app saves the work on the phone and sends it on its own when signal returns.",
+    bullets: [
+      "Clock in only when they're at the job site",
+      "Today's sites, checklists and work orders in one place",
+      "Saves work with no signal, then sends it when signal returns",
+      "English and Spanish",
+    ],
+    android: "Using Android? Your crew can still use RhinoScore in the phone's web browser.",
+  },
+  es: {
+    heading: "La app de RhinoScore. Gratis para todo su equipo.",
+    body: "Su equipo marca su entrada, completa sus listas y registra su trabajo desde su propio iPhone. ¿Sin señal en el sótano? La app guarda el trabajo en el teléfono y lo envía sola cuando vuelve la señal.",
+    bullets: [
+      "Marcan su entrada solo cuando están en el sitio de trabajo",
+      "Los sitios, listas y órdenes de trabajo del día en un solo lugar",
+      "Guarda el trabajo sin señal y lo envía cuando vuelve",
+      "Inglés y español",
+    ],
+    android: "¿Usa Android? Su equipo puede usar RhinoScore en el navegador del teléfono.",
+  },
+};
+
 const roles = [
   ["Owners", "The whole operation at a glance."],
   ["Managers", "Today's priorities across every site."],
   ["Crews and subcontractors", "Clear, simple, in English or Spanish, on their phone."],
   ["Your customers", "Proof of the work, any time."],
 ];
+
+function CrewApp({ lang }) {
+  const t = crewApp[lang];
+  return (
+    <div className="crew-app-grid" lang={lang === "es" ? "es" : undefined}>
+      <div>
+        <h2>{t.heading}</h2>
+        <p className="crew-app-body">{t.body}</p>
+        <ul className="check-list">
+          {t.bullets.map((b) => (
+            <li key={b}>
+              <svg className="tick" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {b}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="crew-app-get">
+        <div className="crew-app-row">
+          <AppStoreBadge lang={lang} />
+          <AppStoreQr lang={lang} />
+        </div>
+        <p className="crew-app-android">{t.android}</p>
+      </div>
+    </div>
+  );
+}
 
 function Devices() {
   return (
@@ -79,6 +135,13 @@ export function HomePage() {
             <div className="hero-actions">
               <a className="button primary" href={DEMO}>Request a demo</a>
               <a className="button secondary" href="/how-it-works">See how it works</a>
+            </div>
+            <div className="hero-app">
+              <AppStoreBadge />
+              <p>
+                Crew on iPhone? Get the free app.
+                <span lang="es">¿Su equipo usa iPhone? Descargue la app gratis.</span>
+              </p>
             </div>
             <p className="hero-note">Built for teams across many locations. English and Spanish.</p>
           </div>
@@ -149,6 +212,14 @@ export function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section crew-app" id="app">
+        <div className="wrap">
+          <span className="eyebrow">For your crew</span>
+          <CrewApp lang="en" />
+          <div className="crew-app-es"><CrewApp lang="es" /></div>
         </div>
       </section>
 

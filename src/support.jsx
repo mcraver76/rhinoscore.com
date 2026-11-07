@@ -2,6 +2,7 @@
 // The App Store and Google Play "Support URL" for the phone apps (Varda's copy, 2026-10-31).
 import { SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_TEL } from "./sms.jsx";
 import { DEMO_HREF } from "./routes.js";
+import { AppStoreBadge, AppStoreQr } from "./appstore.jsx";
 
 const Mail = () => <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>;
 const Phone = () => <a href={SUPPORT_TEL}>{SUPPORT_PHONE}</a>;
@@ -12,6 +13,7 @@ const SUPPORT = {
     intro: <>Email <b><Mail /></b> or call or text <b><Phone /></b>, and a real person will reply, usually within one business day.</>,
     heading: "Common questions",
     faq: [
+      ["Where do I get the app?", <>On iPhone, tap the button below or search "RhinoScore" in the App Store. It's free. Your company administrator sends your invite so you can sign in.<span className="faq-app"><AppStoreBadge /><AppStoreQr small /></span></>],
       ["I can't sign in.", "Your company administrator sets up your account. Ask them to resend your invite or reset your access. Still stuck? Email us."],
       ["I had no signal while working.", "The phone app saves your check-ins, checklists, inspections and work logs on the phone, then sends them on its own when signal returns. Keep the app installed and open it once you're back in signal."],
       ["My clock-in didn't work.", "The time clock checks that you're at the job site and takes a quick selfie. Turn on Location and Camera for RhinoScore in your phone's settings, then try again."],
@@ -25,6 +27,7 @@ const SUPPORT = {
     intro: <>Escriba a <b><Mail /></b> o llame o envíe un mensaje de texto al <b><Phone /></b>, y una persona real le responderá, normalmente en un día hábil.</>,
     heading: "Preguntas frecuentes",
     faq: [
+      ["¿Dónde consigo la aplicación?", <>En iPhone, toque el botón o busque "RhinoScore" en el App Store. Es gratis. El administrador de su empresa le envía la invitación para iniciar sesión.<span className="faq-app"><AppStoreBadge lang="es" /><AppStoreQr lang="es" small /></span></>],
       ["No puedo iniciar sesión.", "El administrador de su empresa crea su cuenta. Pídale que le reenvíe la invitación o restablezca su acceso. ¿Sigue sin poder entrar? Escríbanos."],
       ["No tenía señal mientras trabajaba.", "La aplicación guarda sus entradas, listas, inspecciones y registros de trabajo en el teléfono y los envía sola cuando vuelve la señal."],
       ["No pude marcar mi entrada.", "El reloj verifica que esté en el sitio y toma una selfie rápida. Active Ubicación y Cámara para RhinoScore en los ajustes del teléfono e intente de nuevo."],

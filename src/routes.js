@@ -6,6 +6,8 @@ export const APP_URL = "https://app.rhinoscore.com";
 export const OG_IMAGE = `${SITE}/og-image.jpg`;
 // Where every "Request a demo" button goes (email for now; the /demo form ships in its own PR).
 export const DEMO_HREF = "mailto:support@rhinoscore.com?subject=RhinoScore%20demo%20request";
+// The iPhone app on the US App Store (live 2026-11-06). Badges + QR code in public/badges/.
+export const APP_STORE_URL = "https://apps.apple.com/us/app/rhinoscore/id6829856846";
 
 export const ROUTES = [
   {

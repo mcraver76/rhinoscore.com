@@ -7,6 +7,7 @@ import { LEGAL_LINE, OWNER, SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_TEL, PrivacyPa
 import { SupportPage } from "./support.jsx";
 import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
+import { APPLE_TRADEMARK, AppStoreBadge } from "./appstore.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
 const pillars = [
@@ -149,7 +150,10 @@ function Footer() {
           </div>
           <div className="footer-col">
             <h4>Contact</h4>
-            <a href="/support">Support</a>
+            <div className="footer-support">
+              <a href="/support">Support</a>
+              <AppStoreBadge className="small" />
+            </div>
             <span className="footer-text">{OWNER}</span>
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
             <a href={SUPPORT_TEL}>{SUPPORT_PHONE}</a>
@@ -158,6 +162,7 @@ function Footer() {
       </div>
       <div className="wrap footer-bottom">
         <span className="legal-line">{LEGAL_LINE}</span>
+        <span className="legal-line trademark">{APPLE_TRADEMARK}</span>
       </div>
     </footer>
   );
