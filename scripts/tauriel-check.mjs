@@ -28,7 +28,7 @@ const RULES = [
 const PKG = /analytics|gtag|ga4|react-ga|@vercel\/analytics|speed-insights|posthog|segment|mixpanel|sentry|logrocket|hotjar/i;
 const DOMAIN = /https?:\/\/[a-z0-9.-]+/gi;
 
-const diff = execFileSync("git", ["diff", "--unified=0", "--no-color", `${base}...HEAD`], { encoding: "utf8", maxBuffer: 64 << 20 });
+const diff = execFileSync("git", ["diff", "--no-renames", "--unified=0", "--no-color", `${base}...HEAD`], { encoding: "utf8", maxBuffer: 64 << 20 });
 let file = null, line = 0;
 const hits = [];
 const selfHit = new Set();
