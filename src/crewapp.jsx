@@ -11,7 +11,7 @@ const CREW_APP = {
     bullets: [
       "Check in only when you're at the job site",
       "Today's sites, checklists and work orders in one place",
-      "Messages from the office, in English or Spanish",
+      "Messages from the office, right in the app",
       "English and Spanish",
     ],
     android: "Using Android? You can still use RhinoScore in your phone's web browser.",
@@ -24,7 +24,7 @@ const CREW_APP = {
     bullets: [
       "Registre su entrada solo cuando esté en el sitio de trabajo",
       "Los sitios, listas y órdenes de trabajo del día en un solo lugar",
-      "Mensajes de la oficina, en inglés o español",
+      "Mensajes de la oficina, directamente en la app",
       "Inglés y español",
     ],
     android: "¿Usa Android? Puede usar RhinoScore en el navegador del teléfono.",
