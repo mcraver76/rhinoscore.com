@@ -100,7 +100,7 @@ export function BuildingServicesPage() {
         actions={<>{demo}<a className="button secondary" href="/#features">See how it works</a></>}
       />
       <Features eyebrow="Today" title="What you get today." items={[
-        ["Proof of work at every site.", "Crews clock in with a selfie and a job-site check, and log their work with photos. You know who was there and when."],
+        ["Proof of work at every site.", "Crews check in with a selfie and a job-site check, and log their work with photos. You know who was there and when."],
         ["Scored inspections.", "Supervisors score each area 1–10 with photos and notes. AI writes the summary, and a PDF report goes to your customer."],
         ["A portal for your customers.", "Your customers sign in to see their results and report an issue, so fewer surprises reach your phone."],
         ["Work orders and supplies.", "Track requests to the finish, and reorder supplies before a site runs out."],
