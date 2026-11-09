@@ -36,6 +36,11 @@ export const ROUTES = [
     description: "How RhinoScore keeps your data isolated, encrypted, access-controlled and exportable. Infrastructure, AI use and engineering practices explained.",
   },
   {
+    path: "/app",
+    title: "Get the app · RhinoScore",
+    description: "The free RhinoScore iPhone app for crews: check in at the site, work your checklists and log your work, in English or Spanish.",
+  },
+  {
     path: "/support",
     title: "Support · RhinoScore",
     description: "Get help with RhinoScore. Email our support team or find answers to common questions.",

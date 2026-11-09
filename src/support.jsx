@@ -15,8 +15,8 @@ const SUPPORT = {
     faq: [
       ["Where do I get the app?", <>On iPhone, tap the button below or search "RhinoScore" in the App Store. It's free. Your company administrator sends your invite so you can sign in.<span className="faq-app"><AppStoreBadge /><AppStoreQr small /></span></>],
       ["I can't sign in.", "Your company administrator sets up your account. Ask them to resend your invite or reset your access. Still stuck? Email us."],
-      ["I had no signal while working.", "The phone app saves your check-ins, checklists, inspections and work logs on the phone, then sends them on its own when signal returns. Keep the app installed and open it once you're back in signal."],
-      ["My clock-in didn't work.", "The time clock checks that you're at the job site and takes a quick selfie. Turn on Location and Camera for RhinoScore in your phone's settings, then try again."],
+      ["I had no signal while working.", "Move to where you have service and try again. If you still can't save your work, tell your supervisor."],
+      ["My check-in didn't work.", "The app checks that you're at the job site and takes a quick selfie. Turn on Location and Camera for RhinoScore in your phone's settings, then try again."],
       ["How do I change the language?", <>RhinoScore works in English and Spanish. In the app, tap <b>Profile</b> and choose English or Español under Language. You can also pick it on the sign-in screen.</>],
       ["I'm a manager and want to see a demo.", <>Email <a href={DEMO_HREF}>{SUPPORT_EMAIL}</a> and we'll set one up.</>],
     ],
@@ -29,8 +29,8 @@ const SUPPORT = {
     faq: [
       ["¿Dónde consigo la aplicación?", <>En iPhone, toque el botón o busque "RhinoScore" en el App Store. Es gratis. El administrador de su empresa le envía la invitación para iniciar sesión.<span className="faq-app"><AppStoreBadge lang="es" /><AppStoreQr lang="es" small /></span></>],
       ["No puedo iniciar sesión.", "El administrador de su empresa crea su cuenta. Pídale que le reenvíe la invitación o restablezca su acceso. ¿Sigue sin poder entrar? Escríbanos."],
-      ["No tenía señal mientras trabajaba.", "La aplicación guarda sus entradas, listas, inspecciones y registros de trabajo en el teléfono y los envía sola cuando vuelve la señal."],
-      ["No pude marcar mi entrada.", "El reloj verifica que esté en el sitio y toma una selfie rápida. Active Ubicación y Cámara para RhinoScore en los ajustes del teléfono e intente de nuevo."],
+      ["No tenía señal mientras trabajaba.", "Vaya a un lugar con servicio e intente de nuevo. Si aún no puede guardar su trabajo, avise a su supervisor."],
+      ["No pude registrar mi entrada.", "La aplicación verifica que esté en el sitio y toma una selfie rápida. Active Ubicación y Cámara para RhinoScore en los ajustes del teléfono e intente de nuevo."],
       ["¿Cómo cambio el idioma?", <>RhinoScore funciona en inglés y español. En la aplicación, toque <b>Perfil</b> y elija English o Español en Idioma. También puede elegirlo en la pantalla de inicio de sesión.</>],
       ["Soy gerente y quiero ver una demostración.", <>Escriba a <a href={DEMO_HREF}>{SUPPORT_EMAIL}</a> y la programamos.</>],
     ],

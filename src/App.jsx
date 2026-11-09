@@ -7,6 +7,7 @@ import { LEGAL_LINE, OWNER, SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_TEL, PrivacyPa
 import { SupportPage } from "./support.jsx";
 import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
+import { CrewAppPage } from "./crewapp.jsx";
 import { APPLE_TRADEMARK, AppStoreBadge } from "./appstore.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
@@ -139,6 +140,7 @@ function Footer() {
             <a href="/security">Security</a>
             <a href={DEMO}>Request a demo</a>
             <a href={APP_URL}>Sign in</a>
+            <a href="/app">Get the app</a>
           </div>
           <div className="footer-col">
             <h4>Legal &amp; data</h4>
@@ -527,6 +529,7 @@ const PAGES = {
   "/terms": TermsPage,
   "/account": AccountPage,
   "/support": SupportPage,
+  "/app": CrewAppPage,
   "/industries/building-services": BuildingServicesPage,
   "/industries/schools": SchoolsPage,
   "/industries/property-management": PropertyManagementPage,

@@ -543,3 +543,16 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 @media (max-width: 900px) { .crew-app-grid { grid-template-columns: 1fr; } }
 /* phone users tap the badge; the QR code is only for people on a computer */
 @media (max-width: 767px) { .app-qr { display: none; } }
+
+/* Landing cleanup for prospects (Varda 2026-11-09) */
+.hero-crew-link { margin: 22px 0 0; color: var(--ink-mute); font-size: 0.92rem; line-height: 1.55; }
+.hero-crew-link a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+.problem-cta, .features-cta { margin-top: 30px; }
+.features-cta { justify-content: center; }
+.crew-app-more { margin: 0; }
+.crew-app-more a { color: var(--cyan); font-weight: 600; }
+.crew-page { padding-top: clamp(40px, 6vw, 80px); }
+@media (max-width: 560px) {
+  .feature-shot { display: none; }
+  .feature h3 { margin-top: 0; }
+}

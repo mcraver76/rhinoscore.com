@@ -4,7 +4,7 @@
 
 
 import { DEMO_HREF as DEMO } from "./routes.js";
-import { AppStoreBadge, AppStoreQr } from "./appstore.jsx";
+import { AppStoreBadge } from "./appstore.jsx";
 
 const problems = [
   "Updates come by text, phone call and paper.",
@@ -13,8 +13,8 @@ const problems = [
 ];
 
 const features = [
-  ["Inspections and scores", "Score every site 1 to 10 with photos, and send polished reports automatically.", "card-inspections", "An inspections list with a score out of 10 for each walkthrough and buttons for customer and internal PDF reports."],
-  ["Crew check-in", "Time clock with photo and location check, so you know who was really on site.", "card-checkin", "A crew member's phone screen with a site and service picked and a large Check in button."],
+  ["Inspections and scores", "Score every site 1 to 10 with photos, and send polished reports to your customers.", "card-inspections", "An inspections list with a score out of 10 for each walkthrough and buttons for customer and internal PDF reports."],
+  ["Crew check-in", "Check-ins with a photo and location check, so you know who was really on site.", "card-checkin", "A crew member's phone screen with a site and service picked and a large Check in button."],
   ["Work orders and supplies", "Track repairs, maintenance and reorders from request to done.", "card-workorders", "The maintenance screen with an open work order for a leaking faucet, ready to assign and mark done."],
   ["Subcontractors", "Check-ins per service, pay invoices, signed agreements, and reminders for missing W-9s.", "card-subcontractors", "A team screen listing phones to approve, documents to review, unsigned agreements and an expiring insurance certificate."],
   ["Customer portal", "Your customers see scores, photos and issue reports, without calling you.", "card-portal", "The customer portal home screen showing an overall inspection score of 9 out of 10 across their locations."],
@@ -22,37 +22,11 @@ const features = [
 ];
 
 const selling = [
-  "Read an RFP and start the estimate in minutes.",
+  "Read an RFP and start the estimate from it.",
   "Let AI draft the estimate, then send a polished proposal.",
   "Get follow-up reminders so no bid goes cold.",
   "See which customers are at risk of leaving, before they do.",
 ];
-
-// The iPhone app section (App Store build spec, Varda 2026-11-07). EN first, then ES on the same page.
-const crewApp = {
-  en: {
-    heading: "The RhinoScore app. Free for your whole crew.",
-    body: "Your team clocks in, works their checklists and logs their work from their own iPhone. No signal in the basement? The app saves the work on the phone and sends it on its own when signal returns.",
-    bullets: [
-      "Clock in only when they're at the job site",
-      "Today's sites, checklists and work orders in one place",
-      "Saves work with no signal, then sends it when signal returns",
-      "English and Spanish",
-    ],
-    android: "Using Android? Your crew can still use RhinoScore in the phone's web browser.",
-  },
-  es: {
-    heading: "La app de RhinoScore. Gratis para todo su equipo.",
-    body: "Su equipo marca su entrada, completa sus listas y registra su trabajo desde su propio iPhone. ¿Sin señal en el sótano? La app guarda el trabajo en el teléfono y lo envía sola cuando vuelve la señal.",
-    bullets: [
-      "Marcan su entrada solo cuando están en el sitio de trabajo",
-      "Los sitios, listas y órdenes de trabajo del día en un solo lugar",
-      "Guarda el trabajo sin señal y lo envía cuando vuelve",
-      "Inglés y español",
-    ],
-    android: "¿Usa Android? Su equipo puede usar RhinoScore en el navegador del teléfono.",
-  },
-};
 
 const roles = [
   ["Owners", "The whole operation at a glance."],
@@ -60,35 +34,6 @@ const roles = [
   ["Crews and subcontractors", "Clear, simple, in English or Spanish, on their phone."],
   ["Your customers", "Proof of the work, any time."],
 ];
-
-function CrewApp({ lang }) {
-  const t = crewApp[lang];
-  return (
-    <div className="crew-app-grid" lang={lang === "es" ? "es" : undefined}>
-      <div>
-        <h2>{t.heading}</h2>
-        <p className="crew-app-body">{t.body}</p>
-        <ul className="check-list">
-          {t.bullets.map((b) => (
-            <li key={b}>
-              <svg className="tick" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M4 10.5l3.5 3.5L16 5.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              {b}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="crew-app-get">
-        <div className="crew-app-row">
-          <AppStoreBadge lang={lang} />
-          <AppStoreQr lang={lang} />
-        </div>
-        <p className="crew-app-android">{t.android}</p>
-      </div>
-    </div>
-  );
-}
 
 function Devices() {
   return (
@@ -136,13 +81,10 @@ export function HomePage() {
               <a className="button primary" href={DEMO}>Request a demo</a>
               <a className="button secondary" href="/how-it-works">See how it works</a>
             </div>
-            <div className="hero-app">
-              <AppStoreBadge />
-              <p>
-                Crew on iPhone? Get the free app.
-                <span lang="es">¿Su equipo usa iPhone? Descargue la app gratis.</span>
-              </p>
-            </div>
+            <p className="hero-crew-link">
+              Crew member? <a href="/app">Get the free app <span aria-hidden="true">→</span></a>
+              <span lang="es"> · ¿Es del equipo? <a href="/app#es">Descargue la app</a></span>
+            </p>
             <p className="hero-note">Built for teams across many locations. English and Spanish.</p>
           </div>
           <Devices />
@@ -156,6 +98,9 @@ export function HomePage() {
             {problems.map((p) => (<li key={p}><span className="dash" aria-hidden="true" />{p}</li>))}
           </ul>
           <p className="problem-close">Owners manage <b>exceptions</b>, not data.</p>
+          <div className="hero-actions problem-cta">
+            <a className="button primary" href={DEMO}>Request a demo</a>
+          </div>
         </div>
       </section>
 
@@ -175,6 +120,10 @@ export function HomePage() {
                 <p>{body}</p>
               </article>
             ))}
+          </div>
+          <div className="hero-actions features-cta">
+            <a className="button primary" href={DEMO}>Request a demo</a>
+            <a className="button secondary" href="/how-it-works">See how it works</a>
           </div>
         </div>
       </section>
@@ -216,10 +165,19 @@ export function HomePage() {
       </section>
 
       <section className="section crew-app" id="app">
-        <div className="wrap">
-          <span className="eyebrow">For your crew</span>
-          <CrewApp lang="en" />
-          <div className="crew-app-es"><CrewApp lang="es" /></div>
+        <div className="wrap crew-app-grid">
+          <div>
+            <span className="eyebrow">For your crew</span>
+            <h2>A free app for your whole crew.</h2>
+            <p className="crew-app-body">
+              Your team checks in at the site, works their checklists and logs their work from their own iPhone, in
+              English or Spanish. There are no per-user fees, so adding people never costs you more.
+            </p>
+            <p className="crew-app-more"><a href="/app">Crew members: get the app <span aria-hidden="true">→</span></a></p>
+          </div>
+          <div className="crew-app-get">
+            <AppStoreBadge />
+          </div>
         </div>
       </section>
 
