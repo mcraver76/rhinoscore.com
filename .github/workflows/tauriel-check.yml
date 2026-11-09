@@ -1,0 +1,24 @@
+name: Tauriel safety check
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+jobs:
+  safety:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reviewed by Tauriel
+        if: contains(github.event.pull_request.labels.*.name, 'tauriel-pass')
+        run: echo 'Label "tauriel-pass" present, so Tauriel reviewed this PR. Skipping the scan.'
+      - uses: actions/checkout@v4
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
+        with:
+          node-version: 20
+      - name: Scan added lines
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
+        run: node scripts/tauriel-check.mjs "origin/${{ github.base_ref }}"
