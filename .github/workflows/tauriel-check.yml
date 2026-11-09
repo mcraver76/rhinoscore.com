@@ -7,18 +7,28 @@ permissions:
 jobs:
   safety:
     runs-on: ubuntu-latest
+    env:
+      BASE: ${{ github.base_ref }}
+      # Skip only when Tauriel's label is on AND this run is not a new push (a new push always re-scans).
+      PASSED: ${{ contains(github.event.pull_request.labels.*.name, 'tauriel-pass') && github.event.action != 'synchronize' }}
     steps:
       - name: Reviewed by Tauriel
-        if: contains(github.event.pull_request.labels.*.name, 'tauriel-pass')
-        run: echo 'Label "tauriel-pass" present, so Tauriel reviewed this PR. Skipping the scan.'
-      - uses: actions/checkout@v4
-        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
+        if: env.PASSED == 'true'
+        run: echo 'Label "tauriel-pass" present and no new push since, so Tauriel reviewed this PR. Skipping the scan.'
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        if: env.PASSED != 'true'
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
-        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        if: env.PASSED != 'true'
         with:
           node-version: 20
-      - name: Scan added lines
-        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tauriel-pass') }}
-        run: node scripts/tauriel-check.mjs "origin/${{ github.base_ref }}"
+      - name: Scan added lines (using the base branch's copy of the check when it exists)
+        if: env.PASSED != 'true'
+        run: |
+          if git cat-file -e "origin/$BASE:scripts/tauriel-check.mjs" 2>/dev/null; then
+            git show "origin/$BASE:scripts/tauriel-check.mjs" > "$RUNNER_TEMP/tauriel-check.mjs"
+          else
+            cp scripts/tauriel-check.mjs "$RUNNER_TEMP/tauriel-check.mjs"
+          fi
+          node "$RUNNER_TEMP/tauriel-check.mjs" "origin/$BASE"
