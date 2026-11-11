@@ -478,7 +478,7 @@ function SecurityPage() {
             <p className="eyebrow">AI</p>
             <h2>AI, handled transparently</h2>
             <p>Some RhinoScore features (like drafting estimates or summarizing documents and photos) use a third-party AI provider (Anthropic). When you use those features, the relevant content is sent to that provider to generate the result. We send only what the feature needs, over encrypted connections, and we don't use your data to train external models.</p>
-            <p>If you use the microphone with Rhywyn, our assistant, your browser or phone turns your voice into text (Chrome and Edge use Google, Safari and iPhone use Apple). RhinoScore receives only the text and never records or keeps your voice.</p>
+            <p><strong>Voice (talking to Rhywyn).</strong> If you use the microphone to talk to Rhywyn, our assistant, your own browser or phone turns your speech into text before anything reaches RhinoScore. Chrome and Edge use Google's speech service; Safari and iPhone use Apple's; Android phones use the phone's own recognition or Google's. Only the text of your question is sent to our AI provider (Anthropic). RhinoScore never receives, records or keeps your voice, and the microphone is on only while you tap it.</p>
           </section>
 
           {/* Backup line CONFIRMED by owner (backups enabled). Do NOT extend to broader disaster-recovery claims without verification. */}
