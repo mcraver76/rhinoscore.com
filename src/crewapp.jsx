@@ -19,16 +19,16 @@ const CREW_APP = {
   },
   es: {
     eyebrow: "Para el equipo",
-    heading: "La app de RhinoScore. Gratis para todo su equipo.",
-    body: "Registre su entrada en el sitio, complete sus listas y registre su trabajo desde su propio iPhone. Su empresa le envía la invitación para iniciar sesión.",
+    heading: "La app de RhinoScore. Gratis para todo tu equipo.",
+    body: "Registra tu entrada en el sitio, completa tus listas y registra tu trabajo desde tu propio iPhone. Tu empresa te envía la invitación para iniciar sesión.",
     bullets: [
-      "Registre su entrada solo cuando esté en el sitio de trabajo",
+      "Registra tu entrada solo cuando estés en el sitio de trabajo",
       "Los sitios, listas y órdenes de trabajo del día en un solo lugar",
       "Mensajes de la oficina, directamente en la app",
       "Inglés y español",
     ],
-    android: "¿Usa Android? Puede usar RhinoScore en el navegador del teléfono.",
-    help: <>¿Necesita ayuda? Vea <a href="/support#es">Soporte</a>.</>,
+    android: "¿Usas Android? Puedes usar RhinoScore en el navegador del teléfono.",
+    help: <>¿Necesitas ayuda? Ve a <a href="/support#es">Soporte</a>.</>,
   },
 };
 
