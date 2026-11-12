@@ -110,7 +110,7 @@ export function BuildingServicesPage() {
         ["English and Spanish", "for every crew member."],
       ]} />
       <Prose eyebrow="Why it matters" title="Most days, most sites are fine.">
-        <p>RhinoScore shows you the few that aren't (a missed check-in, a low score, an open work order) so your managers spend their time on exceptions, not on chasing data.</p>
+        <p>RhinoScore shows you the few that aren't (a falling score, an open work order) so your managers spend their time on exceptions, not on chasing data.</p>
       </Prose>
       <Close actions={demo} word="sites" />
     </main>
