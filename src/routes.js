@@ -8,6 +8,8 @@ export const OG_IMAGE = `${SITE}/og-image.jpg`;
 export const DEMO_HREF = "mailto:support@rhinoscore.com?subject=RhinoScore%20demo%20request";
 // The iPhone app on the US App Store (live 2026-11-06). Badges + QR code in public/badges/.
 export const APP_STORE_URL = "https://apps.apple.com/us/app/rhinoscore/id6829856846";
+// The Android app on Google Play (public production listing; Eärwen confirmed 2026-11-18). Badges in public/badges/.
+export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.rhinoscore.app";
 
 export const ROUTES = [
   {
@@ -38,7 +40,7 @@ export const ROUTES = [
   {
     path: "/app",
     title: "Get the app · RhinoScore",
-    description: "The free RhinoScore iPhone app for crews: check in at the site, work your checklists and log your work, in English or Spanish.",
+    description: "The free RhinoScore app for crews, on iPhone and Android: check in at the site, work your checklists and log your work, in English or Spanish.",
   },
   {
     path: "/support",

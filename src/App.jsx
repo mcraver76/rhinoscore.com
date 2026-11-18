@@ -8,7 +8,7 @@ import { SupportPage } from "./support.jsx";
 import { BuildingServicesPage, PropertyManagementPage, SchoolsPage } from "./industries.jsx";
 import { HomePage } from "./home.jsx";
 import { CrewAppPage } from "./crewapp.jsx";
-import { APPLE_TRADEMARK, AppStoreBadge } from "./appstore.jsx";
+import { APPLE_TRADEMARK, GOOGLE_TRADEMARK, StoreBadges } from "./appstore.jsx";
 import { APP_URL, DEMO_HREF as DEMO, NOT_FOUND, routeFor } from "./routes.js";
 
 const pillars = [
@@ -154,7 +154,7 @@ function Footer() {
             <h4>Contact</h4>
             <div className="footer-support">
               <a href="/support">Support</a>
-              <AppStoreBadge className="small" />
+              <StoreBadges className="small" />
             </div>
             <span className="footer-text">{OWNER}</span>
             <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
@@ -164,7 +164,7 @@ function Footer() {
       </div>
       <div className="wrap footer-bottom">
         <span className="legal-line">{LEGAL_LINE}</span>
-        <span className="legal-line trademark">{APPLE_TRADEMARK}</span>
+        <span className="legal-line trademark">{APPLE_TRADEMARK} {GOOGLE_TRADEMARK}</span>
       </div>
     </footer>
   );

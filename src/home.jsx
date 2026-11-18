@@ -4,7 +4,7 @@
 
 
 import { DEMO_HREF as DEMO } from "./routes.js";
-import { AppStoreBadge } from "./appstore.jsx";
+import { StoreBadges } from "./appstore.jsx";
 
 const problems = [
   "Updates come by text, phone call and paper.",
@@ -170,13 +170,13 @@ export function HomePage() {
             <span className="eyebrow">For your crew</span>
             <h2>A free app for your whole crew.</h2>
             <p className="crew-app-body">
-              Your team checks in at the site, works their checklists and logs their work from their own iPhone, in
+              Your team checks in at the site, works their checklists and logs their work from their own phone, in
               English or Spanish. There are no per-user fees, so adding people never costs you more.
             </p>
             <p className="crew-app-more"><a href="/app">Crew members: get the app <span aria-hidden="true">→</span></a></p>
           </div>
           <div className="crew-app-get">
-            <AppStoreBadge />
+            <StoreBadges />
           </div>
         </div>
       </section>

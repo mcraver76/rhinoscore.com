@@ -516,6 +516,10 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 /* ---------- App Store badge + QR (Apple: >= 40px tall, clear space >= 1/4 height, never bigger than the buttons) ---------- */
 .app-badge { display: inline-block; flex: none; padding: 10px; margin: -10px; line-height: 0; }
 .app-badge img { height: 40px; width: auto; }
+.store-badges { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+/* Google's PNG carries its own clear space (about 1/4 of the badge height on each side): draw it 60px tall
+   and pull it in 10px so the visible badge is 40px, the same as the App Store badge. */
+.play-badge img { height: 60px; margin: -10px; }
 .hero-app { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
 .hero-app p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
 .hero-app p span { display: block; color: var(--ink-mute); font-size: 0.88rem; }
