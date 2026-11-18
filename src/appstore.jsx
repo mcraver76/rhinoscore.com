@@ -17,7 +17,7 @@ const PLAY_ALT = { en: "Get it on Google Play", es: "Disponible en Google Play" 
 export function GooglePlayBadge({ lang = "en", className = "" }) {
   return (
     <a className={`app-badge play-badge ${className}`.trim()} href={PLAY_STORE_URL} target="_blank" rel="noopener">
-      <img src={`/badges/google-play-${lang}.png`} alt={PLAY_ALT[lang]} />
+      <img src={`/badges/google-play-${lang}.png`} width="155" height="60" alt={PLAY_ALT[lang]} />
     </a>
   );
 }
