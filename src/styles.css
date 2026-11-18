@@ -532,7 +532,10 @@ h1 em, h2 em { font-style: normal; color: var(--cyan); }
 .crew-app-android { margin: 0; color: var(--ink-mute); font-size: 0.9rem; line-height: 1.5; max-width: 40ch; }
 .crew-app-es { margin-top: clamp(40px, 5vw, 60px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--line); }
 
-.app-qr { margin: 0; display: grid; gap: 10px; justify-items: start; max-width: 200px; }
+.app-qr { margin: 0; display: grid; gap: 10px; justify-items: start; max-width: 300px; }
+.app-qr-row { display: flex; gap: 16px; }
+.app-qr-item { display: grid; gap: 6px; justify-items: center; }
+.app-qr-label { color: var(--ink-mute); font-size: 0.78rem; font-weight: 600; }
 .app-qr img { width: 132px; height: 132px; background: #fff; border-radius: 8px; }
 .app-qr figcaption { color: var(--ink-mute); font-size: 0.82rem; line-height: 1.45; }
 .app-qr.small img { width: 120px; height: 120px; }

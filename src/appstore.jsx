@@ -41,15 +41,27 @@ export function AppStoreBadge({ lang = "en", className = "" }) {
 }
 
 const QR_CAPTION = {
-  en: "On your computer? Scan with your iPhone camera to get the app.",
-  es: "¿Está en su computadora? Escanee con la cámara de su iPhone para descargar la app.",
+  en: "On your computer? Scan the code for your phone with its camera to get the app.",
+  es: "¿Estás en tu computadora? Escanea el código de tu teléfono con la cámara para descargar la app.",
 };
 
-// Desktop only (hidden below 768px): phone users just tap the badge.
-export function AppStoreQr({ lang = "en", small = false }) {
+const QR_CODES = [
+  { label: "iPhone", src: "/badges/app-store-qr.svg", alt: { en: "QR code: RhinoScore on the App Store", es: "Código QR: RhinoScore en el App Store" } },
+  { label: "Android", src: "/badges/google-play-qr.svg", alt: { en: "QR code: RhinoScore on Google Play", es: "Código QR: RhinoScore en Google Play" } },
+];
+
+// Desktop only (hidden below 768px): phone users just tap the badge. One code per store.
+export function StoreQrs({ lang = "en", small = false }) {
   return (
     <figure className={small ? "app-qr small" : "app-qr"}>
-      <img src="/badges/app-store-qr.svg" width="132" height="132" alt="QR code: RhinoScore on the App Store" loading="lazy" decoding="async" />
+      <div className="app-qr-row">
+        {QR_CODES.map((q) => (
+          <div className="app-qr-item" key={q.label}>
+            <img src={q.src} width="132" height="132" alt={q.alt[lang]} loading="lazy" decoding="async" />
+            <span className="app-qr-label">{q.label}</span>
+          </div>
+        ))}
+      </div>
       <figcaption>{QR_CAPTION[lang]}</figcaption>
     </figure>
   );

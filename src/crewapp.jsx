@@ -1,7 +1,7 @@
 // RhinoScore — /app: the crew download page (EN + ES). Moved off the home page (Varda 2026-11-09)
 // so the home page speaks to buyers. Invite emails and the home page link here.
 // Claims: only live + device-proven features (no offline/no-signal claims until the live app proves them).
-import { StoreBadges, AppStoreQr } from "./appstore.jsx";
+import { StoreBadges, StoreQrs } from "./appstore.jsx";
 
 const CREW_APP = {
   en: {
@@ -53,7 +53,7 @@ function Block({ lang, id }) {
       <div className="crew-app-get">
         <div className="crew-app-row">
           <StoreBadges lang={lang} />
-          <AppStoreQr lang={lang} />
+          <StoreQrs lang={lang} />
         </div>
         <p className="crew-app-android">{t.help}</p>
       </div>
